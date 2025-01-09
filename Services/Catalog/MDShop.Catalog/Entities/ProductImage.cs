@@ -1,5 +1,5 @@
 ﻿namespace MDShop.Catalog.Entities {
-    public class ProductImages {
+    public class ProductImage {
         public string ProductImagesID { get; set; }
         public string ProductImage1 { get; set; }
         public string ProductImage2 { get; set; }
