@@ -1,7 +1,7 @@
 ﻿using MDShop.Catalog.Dtos.ProductDetailDtos;
 
-namespace MDShop.Catalog.Services.ProductDetailDetailServices {
-    public interface IProductDetailDetailService {
+namespace MDShop.Catalog.Services.ProductDetailServices {
+    public interface IProductDetailService {
         Task<List<ResultProductDetailDto>> GetAllProductDetailAsync();
         Task CreateProductDetailAsync(CreateProductDetailDto createProductDetailDto);
         Task UpdateProductDetailAsync(UpdateProductDetailDto updateProductDetailDto);
