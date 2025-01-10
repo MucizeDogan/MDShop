@@ -4,7 +4,8 @@ namespace MDShop.Catalog.Services.CategoryServices {
     public interface ICategoryService {
         Task<List<ResultCategoryDto>> GetAllCategoryAsync();
         Task CreateCategoryAsync(CreateCategoryDto createCategoryDto);
-        Task UpdateCategoryAsync(string id);
-        Task<GetByIdCategoryDto> GetByIdCategoryAsync();
+        Task UpdateCategoryAsync(UpdateCategoryDto updateCategoryDto);
+        Task DeleteCategoryAsync(string id);
+        Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id);
     }
 }
