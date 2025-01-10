@@ -2,12 +2,12 @@
 using MDShop.Catalog.Dtos.ProductDetailDtos;
 using MDShop.Catalog.Dtos.ProductDtos;
 using MDShop.Catalog.Entities;
-using MDShop.Catalog.Services.ProductDetailDetailServices;
+using MDShop.Catalog.Services.ProductDetailServices;
 using MDShop.Catalog.Settings;
 using MongoDB.Driver;
 
 namespace MDShop.Catalog.Services.ProductDetailServices {
-    public class ProductDetailService : IProductDetailDetailService {
+    public class ProductDetailService : IProductDetailService {
         private readonly IMongoCollection<ProductDetail> _productDetailCollection;
         private readonly IMapper _mapper;
 
