@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MDShop.Order.Application.Features.CQRS.Commands.AddressCommands {
-    public class UpdateAddressCoomand {
+    public class UpdateAddressCommand {
         public int AddressId { get; set; }
         public string UserId { get; set; }
         public string District { get; set; } //ilçe
