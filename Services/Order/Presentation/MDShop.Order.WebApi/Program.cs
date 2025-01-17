@@ -2,6 +2,7 @@ using MDShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using MDShop.Order.Application.Features.CQRS.Handlers.OrderDetailHandlers;
 using MDShop.Order.Application.Interfaces;
 using MDShop.Order.Application.Services;
+using MDShop.Order.Persistence.Context;
 using MDShop.Order.Persistence.Repositeries;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddApplicationService(builder.Configuration); // Ordering MediatR registiration
+builder.Services.AddDbContext<OrderContext>();
 
 #region Address & OrderDetail CQRS Registration
 builder.Services.AddScoped<GetAddressQueryHandler>();
