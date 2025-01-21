@@ -3,8 +3,8 @@
 
 
 using IdentityServer4;
-using MDShop.IdentityServer.Data;
-using MDShop.IdentityServer.Models;
+using MDShope.IdentityServer.Data;
+using MDShope.IdentityServer.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace MDShop.IdentityServer
+namespace MDShope.IdentityServer
 {
     public class Startup
     {
@@ -31,7 +31,7 @@ namespace MDShop.IdentityServer
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
