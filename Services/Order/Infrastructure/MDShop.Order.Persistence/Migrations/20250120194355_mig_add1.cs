@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MDShop.Order.Persistence.Migrations
 {
-    public partial class mig1 : Migration
+    public partial class mig_add1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

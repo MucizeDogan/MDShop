@@ -5,7 +5,7 @@
 using IdentityServer4.Models;
 using System.Collections.Generic;
 
-namespace MDShop.IdentityServer
+namespace MDShope.IdentityServer
 {
     public static class Config
     {
