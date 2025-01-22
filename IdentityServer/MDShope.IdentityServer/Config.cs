@@ -57,7 +57,7 @@ namespace MDShope.IdentityServer
                 ClientName = "MDShop Visitor User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
-                AllowedScopes = { "CatalogReadPermission", "DiscountFullPermission" } // Visitor hangi yetkilere sahip olsun.
+                AllowedScopes = { "CatalogReadPermission" } // Visitor hangi yetkilere sahip olsun.
 
             },
 
