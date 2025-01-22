@@ -3,12 +3,19 @@ using MDShop.Catalog.Services.ProductDetailServices;
 using MDShop.Catalog.Services.ProductImageServices;
 using MDShop.Catalog.Services.ProductServices;
 using MDShop.Catalog.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => {
+    opt.Authority = builder.Configuration["IdentityServerUrl"];  //OpenId yi çaðýracak yer. Jwt Bearer ý kimle birlikte kullanacaðýmýzý belirliyoruz. IdentityServerUrl appSettings.json ýndan gelecek. bu da artýk catalog Identity ile birlikte ayaða kalkacak.
+    opt.Audience = "ResourceCatalog";
+    opt.RequireHttpsMetadata = false; //Https den http ye çektiðimiz için bu ayar gerekiyor.
+});
 
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
@@ -37,6 +44,7 @@ if (app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

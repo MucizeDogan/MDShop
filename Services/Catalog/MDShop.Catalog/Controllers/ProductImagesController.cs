@@ -1,5 +1,6 @@
 ﻿using MDShop.Catalog.Dtos.ProductImageDtos;
 using MDShop.Catalog.Services.ProductImageServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

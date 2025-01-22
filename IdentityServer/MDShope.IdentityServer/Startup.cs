@@ -28,6 +28,7 @@ namespace MDShope.IdentityServer
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddLocalApiAuthentication(); // bu metod ile yerelde 1 tane token alınacak ve buna sahip kullanıcılar koruma altına alınan yerde ilgili işlemleri gerçekleştiricek
             services.AddControllersWithViews();
 
             services.AddDbContext<ApplicationDbContext>(options =>
@@ -81,6 +82,7 @@ namespace MDShope.IdentityServer
 
             app.UseRouting();
             app.UseIdentityServer();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
