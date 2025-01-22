@@ -21,7 +21,7 @@ namespace MDShope.IdentityServer
            //new ApiResource("ResourceImage"){Scopes={ "ImageFullPermission" } },
            //new ApiResource("ResourceOcelot"){Scopes={"OcelotFullPermission"} },
            //new ApiResource("ResourceMessage"){Scopes={"MessageFullPermission"} },
-           //new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
+           new ApiResource(IdentityServerConstants.LocalApi.ScopeName)
 
         };
         // ApiResources ismindeki property imde yapacağım şey şu ApiResurces çağrıldığı zaman ben herbir mikroservisim için o mikroservise erişim sağlanılacak olan bir key vereceğim
@@ -47,7 +47,7 @@ namespace MDShope.IdentityServer
             //new ApiScope("ImageFullPermission","Full authority for image operations"),
             //new ApiScope("OcelotFullPermission","Full authority for ocelot operations"),
             //new ApiScope("MessageFullPermission","Full authority for message operations"),
-            //new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
+            new ApiScope(IdentityServerConstants.LocalApi.ScopeName)
         };
 
         public static IEnumerable<Client> Clients => new Client[] {
@@ -76,7 +76,8 @@ namespace MDShope.IdentityServer
                 ClientName = "MDShop Admin User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
-                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermisson", IdentityServerConstants.LocalApi.ScopeName,
+                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermisson", 
+                IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
                 IdentityServerConstants.StandardScopes.OpenId,
                 IdentityServerConstants.StandardScopes.Profile

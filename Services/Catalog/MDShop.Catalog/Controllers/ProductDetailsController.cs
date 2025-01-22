@@ -1,5 +1,6 @@
 ﻿using MDShop.Catalog.Dtos.ProductDetailDtos;
 using MDShop.Catalog.Services.ProductDetailServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
