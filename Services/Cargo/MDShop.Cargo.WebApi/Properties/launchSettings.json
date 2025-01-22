@@ -4,18 +4,17 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:57393",
-      "sslPort": 44300
+      "applicationUrl": "http://localhost:3595",
+      "sslPort": 44317
     }
   },
   "profiles": {
-    "MDShop.Catalog": {
+    "MDShop.Cargo.WebApi": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": false, // tarayıcı çalışmayacak false ise
+      "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7070",
-      //"applicationUrl": "https://localhost:7117;http://localhost:5049",
+      "applicationUrl": "https://localhost:7188;http://localhost:5274",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
