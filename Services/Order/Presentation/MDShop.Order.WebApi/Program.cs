@@ -4,10 +4,17 @@ using MDShop.Order.Application.Interfaces;
 using MDShop.Order.Application.Services;
 using MDShop.Order.Persistence.Context;
 using MDShop.Order.Persistence.Repositeries;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => {
+    opt.Authority = builder.Configuration["IdentityServerUrl"];  //OpenId yi çaðýracak yer. Jwt Bearer ý kimle birlikte kullanacaðýmýzý belirliyoruz. IdentityServerUrl appSettings.json ýndan gelecek. bu da artýk catalog Identity ile birlikte ayaða kalkacak.
+    opt.Audience = "ResourceOrder";
+    opt.RequireHttpsMetadata = false; //Https den http ye çektiðimiz için bu ayar gerekiyor.
+});
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddApplicationService(builder.Configuration); // Ordering MediatR registiration
@@ -42,6 +49,7 @@ if (app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

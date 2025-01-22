@@ -1,9 +1,17 @@
 using MDShop.Discount.Context;
 using MDShop.Discount.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt => {
+    opt.Authority = builder.Configuration["IdentityServerUrl"];  //OpenId yi çaðýracak yer. Jwt Bearer ý kimle birlikte kullanacaðýmýzý belirliyoruz. IdentityServerUrl appSettings.json ýndan gelecek. bu da artýk catalog Identity ile birlikte ayaða kalkacak.
+    opt.Audience = "ResourceDiscount";
+    opt.RequireHttpsMetadata = false; //Https den http ye çektiðimiz için bu ayar gerekiyor.
+});
+
 builder.Services.AddTransient<DapperContext>();
 builder.Services.AddTransient<IDiscountService,DiscountService>();
 
@@ -22,6 +30,7 @@ if (app.Environment.IsDevelopment()) {
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
