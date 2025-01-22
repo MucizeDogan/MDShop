@@ -1,10 +1,12 @@
 ﻿using MDShop.Order.Application.Features.CQRS.Commands.AddressCommands;
 using MDShop.Order.Application.Features.CQRS.Handlers.AddressHandlers;
 using MDShop.Order.Application.Features.CQRS.Queries.AddressQueries;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MDShop.Order.WebApi.Controllers {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AddressesController : ControllerBase {
