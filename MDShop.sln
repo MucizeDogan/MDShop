@@ -36,19 +36,20 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{F58E2CBF-2ABE-4C2D-891F-9012ECF30933}"
 	ProjectSection(SolutionItems) = preProject
 		PortainerCMD.txt = PortainerCMD.txt
+		PortNumbers.txt = PortNumbers.txt
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cargo", "Cargo", "{C8744756-787A-4D3A-90F8-1B141BAC5E21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDShop.Cargo.BusinessLayer", "Services\Cargo\MDShop.Cargo.BusinessLayer\MDShop.Cargo.BusinessLayer.csproj", "{D058A480-6300-47F8-9AA4-DCE2B7C5256B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDShop.Cargo.BusinessLayer", "Services\Cargo\MDShop.Cargo.BusinessLayer\MDShop.Cargo.BusinessLayer.csproj", "{D058A480-6300-47F8-9AA4-DCE2B7C5256B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDShop.Cargo.EntityLayer", "Services\Cargo\MDShop.Cargo.EntityLayer\MDShop.Cargo.EntityLayer.csproj", "{45802CBE-A5B6-49D1-A23B-ABBB25A9DD9C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDShop.Cargo.EntityLayer", "Services\Cargo\MDShop.Cargo.EntityLayer\MDShop.Cargo.EntityLayer.csproj", "{45802CBE-A5B6-49D1-A23B-ABBB25A9DD9C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDShop.Cargo.DataAccessLayer", "Services\Cargo\MDShop.Cargo.DataAccessLayer\MDShop.Cargo.DataAccessLayer.csproj", "{811D1EE2-209C-4F24-B939-138A1881CBB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDShop.Cargo.DataAccessLayer", "Services\Cargo\MDShop.Cargo.DataAccessLayer\MDShop.Cargo.DataAccessLayer.csproj", "{811D1EE2-209C-4F24-B939-138A1881CBB2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDShop.Cargo.DtoLayer", "Services\Cargo\MDShop.Cargo.DtoLayer\MDShop.Cargo.DtoLayer.csproj", "{7CBC2E7C-833D-43A7-8371-320B144AF933}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDShop.Cargo.DtoLayer", "Services\Cargo\MDShop.Cargo.DtoLayer\MDShop.Cargo.DtoLayer.csproj", "{7CBC2E7C-833D-43A7-8371-320B144AF933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MDShop.Cargo.WebApi", "Services\Cargo\MDShop.Cargo.WebApi\MDShop.Cargo.WebApi.csproj", "{54B7E720-CF47-4693-A616-9C530792183B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MDShop.Cargo.WebApi", "Services\Cargo\MDShop.Cargo.WebApi\MDShop.Cargo.WebApi.csproj", "{54B7E720-CF47-4693-A616-9C530792183B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
