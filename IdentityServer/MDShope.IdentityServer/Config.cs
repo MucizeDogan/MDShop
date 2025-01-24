@@ -15,7 +15,7 @@ namespace MDShope.IdentityServer
            new ApiResource("ResourceDiscount"){Scopes={"DiscountFullPermission"} },
            new ApiResource("ResourceOrder"){Scopes={"OrderFullPermisson"}},
            new ApiResource("ResourceCargo"){Scopes={"CargoFullPermission"} },
-           //new ApiResource("ResourceBasket"){Scopes={"BasketFullPermission"} },
+           new ApiResource("ResourceBasket"){Scopes={"BasketFullPermission"} },
            //new ApiResource("ResourceComment"){Scopes={"CommentFullPermission"} },
            //new ApiResource("ResourcePayment"){Scopes={ "PaymentFullPermission" } },
            //new ApiResource("ResourceImage"){Scopes={ "ImageFullPermission" } },
@@ -41,7 +41,7 @@ namespace MDShope.IdentityServer
             new ApiScope("DiscountFullPermission","Full authority for discount operations"),
             new ApiScope("OrderFullPermisson","Full authority for order operations"),
             new ApiScope("CargoFullPermission","Full authority for cargo operations"),
-            //new ApiScope("BasketFullPermission","Full authority for basket operations"),
+            new ApiScope("BasketFullPermission","Full authority for basket operations"),
             //new ApiScope("CommentFullPermission","Full authority for comment operations"),
             //new ApiScope("PaymentFullPermission","Full authority for payment operations"),
             //new ApiScope("ImageFullPermission","Full authority for image operations"),
@@ -65,18 +65,20 @@ namespace MDShope.IdentityServer
             new Client {
                 ClientId = "MDShopManagerId",
                 ClientName = "MDShop Manager User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                AllowedGrantTypes =GrantTypes.ClientCredentials, //GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
-                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission" }
+                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission" }
             },
 
             // Admin
             new Client {
                 ClientId = "MDShopAdminId",
                 ClientName = "MDShop Admin User",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, //GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
-                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermisson", "CargoFullPermission",
+                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermisson", "CargoFullPermission", 
+                    "BasketFullPermission",
+
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
                 IdentityServerConstants.StandardScopes.OpenId,
