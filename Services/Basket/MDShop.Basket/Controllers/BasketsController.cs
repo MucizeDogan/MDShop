@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace MDShop.Basket.Controllers {
     [Route("api/[controller]")]
     [ApiController]
-    public class BasketController : ControllerBase {
-        
+    public class BasketsController : ControllerBase {
     }
 }
