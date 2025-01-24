@@ -18,7 +18,7 @@ namespace MDShop.Basket.Controllers {
 
         [HttpGet]
         public async Task<IActionResult> GetMyBasketDetail() {
-            //var user = User.Claims;
+            var user = User.Claims; //Sisteme girmiş olan token a ait bilgileri verecek.
             var values = await _basketService.GetBasket(_loginService.GetUserId);
             return Ok(values);
         }
