@@ -1,0 +1,61 @@
+﻿
+<div class="container-fluid mb-3">
+    <div class="row px-xl-5">
+        <div class="col-lg-8">
+            <div id="header-carousel" class="carousel slide carousel-fade mb-30 mb-lg-0" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#header-carousel" data-slide-to="1"></li>
+                    <li data-target="#header-carousel" data-slide-to="2"></li>
+                    <li data-target="#header-carousel" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item position-relative active" style="height: 430px;">
+                        <img class="position-absolute w-100 h-100" src="~/online-shop-website-template/img/slider-1.jpg" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Erkek Modası</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Tarz sahibi erkeklerin adresi! Modern çizgilerle tasarlanmış şık ve trend parçalarla fark yaratın. Hemen keşfedin...</p>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative" style="height: 430px;">
+                        <img class="position-absolute w-100 h-100" src="~/online-shop-website-template/img/womenFashion.png" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kadın Modası</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Zamansız şıklığın ve modern dokunuşların buluştuğu kadın modası koleksiyonuyla tarzınızı konuşturun. Hemen Keşfedin...</p>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative" style="height: 430px;">
+                        <img class="position-absolute w-100 h-100" src="~/online-shop-website-template/img/kids_fashion.jpg" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Çocuk Modası</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Renkli, rahat ve enerjik! Minik kahramanlar için özel tasarlanmış en sevimli çocuk modası ürünleri burada hemen keşfedin...</p>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item position-relative" style="height: 430px;">
+                        <img class="position-absolute w-100 h-100" src="https://img.freepik.com/free-photo/view-women-bag-stuff_93675-131548.jpg?t=st=1737795033~exp=1737798633~hmac=1d17c251b18426206c24f90c60e746e958fde45d2df1084c3a5fae3cf8e3cc8d&w=1380" style="object-fit: cover;">
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
+                            <div class="p-3" style="max-width: 700px;">
+                                <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Aksesuarlar</h1>
+                                <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Tarzınızın imzasını atın! Şıklığı tamamlayan zarif ve çarpıcı aksesuar seçenekleri sizi bekliyor hemen keşfedin...</p>
+                                <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        @await Component.InvokeAsync("_SpecialOfferComponentPartial")
+
+        
+    </div>
+</div>
