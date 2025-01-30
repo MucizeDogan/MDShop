@@ -89,8 +89,6 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
             return View();
         }
 
-
-
         void CategoryViewbagList(string v4) {
             ViewBag.v1 = "Ana Sayfa";
             ViewBag.v2 = "Kategoriler";
