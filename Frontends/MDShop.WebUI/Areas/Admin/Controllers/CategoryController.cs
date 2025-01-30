@@ -17,10 +17,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
 
         [Route("Index")]
         public async Task<IActionResult> Index() {
-            ViewBag.v0 = "Kategori İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Kategori Listesi";
+            CategoryViewbagList("Kategori Listesi");
 
             var client = _httpClientFactory.CreateClient();
             var res = await client.GetAsync("https://localhost:7070/api/Categories"); //isteğin yapılacağı adres (port-catalog servisine gidecek)
@@ -36,10 +33,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
         [HttpGet]
         [Route("CreateCategory")]
         public IActionResult CreateCategory() {
-            ViewBag.v0 = "Kategori İşlemleri";
-            ViewBag.v1 = "Ana Sayfa";
-            ViewBag.v2 = "Kategoriler";
-            ViewBag.v3 = "Yeni Kategori Girişi";
+            CategoryViewbagList("Yeni Kategori Ekleme");
             return View();
         }
 
@@ -67,6 +61,42 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
             return View();
         }
 
-        
+        [Route("UpdateCategory/{id}")]
+        [HttpGet]
+        public async Task<IActionResult> UpdateCategory(string id) {
+            CategoryViewbagList("Kategori Güncelleme");
+            var client = _httpClientFactory.CreateClient();
+            var res = await client.GetAsync("https://localhost:7070/api/Categories/" + id);
+            if(res.IsSuccessStatusCode) {
+                var jsonData = await res.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<UpdateCategoryDto>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [Route("UpdateCategory/{id}")]
+        [HttpPost]
+        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto) {
+            CategoryViewbagList("Kategori Güncelleme");
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(updateCategoryDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var res = await client.PutAsync("https://localhost:7070/api/Categories/", stringContent);
+            if (res.IsSuccessStatusCode) {
+                return RedirectToAction("Index", "Category", new { area = "Admin" });
+            }
+            return View();
+        }
+
+
+
+        void CategoryViewbagList(string v4) {
+            ViewBag.v1 = "Ana Sayfa";
+            ViewBag.v2 = "Kategoriler";
+            ViewBag.v3 = "Kategori İşlemleri";
+            ViewBag.v4 = v4;
+            
+        }
     }
 }
