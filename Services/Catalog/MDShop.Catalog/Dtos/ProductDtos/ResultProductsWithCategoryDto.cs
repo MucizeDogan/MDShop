@@ -6,6 +6,6 @@
         public string ProductImageUrl { get; set; }
         public string ProductDescription { get; set; }
         public string CategoryID { get; set; }
-        public string CategoryName { get; set; }
+        public string Category { get; set; }
     }
 }
