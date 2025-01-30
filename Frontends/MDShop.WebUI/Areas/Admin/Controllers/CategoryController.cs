@@ -78,7 +78,6 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
         [Route("UpdateCategory/{id}")]
         [HttpPost]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto) {
-            CategoryViewbagList("Kategori Güncelleme");
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateCategoryDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");

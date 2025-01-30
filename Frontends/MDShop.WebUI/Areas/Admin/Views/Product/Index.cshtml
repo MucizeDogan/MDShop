@@ -38,7 +38,7 @@
                                     <th scope="row">@count</th>
                                     <td>@item.ProductName</td>
                                     <td>@item.ProductPrice</td>
-                                    <td><a href="/Admin/Product/DeleteProduct/@item.ProductID" class="btn btn-danger btn-rounded">Sil</a></td>
+                                    <td><a href="/Admin/Product/DeleteProduct/@item.ProductID" class="btn btn-danger btn-rounded" onclick="return confirm('@item.ProductName Bu ürünü silmek istediğinize emin misiniz?')">Sil</a></td>
                                     <td><a href="/Admin/Product/UpdateProduct/@item.ProductID" class="btn btn-warning btn-rounded">Güncelle</a></td>
                                 </tr>
                             }

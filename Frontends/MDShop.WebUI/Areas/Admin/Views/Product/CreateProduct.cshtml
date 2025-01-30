@@ -1,0 +1,43 @@
+﻿@model CreateProductDto
+@{
+    ViewData["Title"] = "CreateProduct";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Ürün Ekleme</h4>
+                <p>Ürün ekleme ile ilgili işlemleri aşağıdaki alanları doldurarak yapabilirsiniz...</p>
+                <br />
+                <div class="bs-example" data-example-id="bordered-table">
+
+                    <form method="post">
+                        <label class="text-bold">Ürün Adı</label>
+                        <input type="text" class="form-control" asp-for="ProductName" />
+                        <br />
+                        <label class="text-bold">Ürün Fiyatı</label>
+                        <input type="number" class="form-control" asp-for="ProductPrice" />
+                        <br />
+                        <label class="text-bold">Ürün Görsel</label>
+                        <input type="text" class="form-control" asp-for="ProductImageUrl" />
+                        <br />
+
+                        <label class="text-bold" for="categoryname">Ürün Kategorisi</label>
+                        @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.c, new { @style = "padding:0;", @class = "form-control" })
+                        <br>
+
+                        <label class="text-bold">Ürün Açıklaması</label>
+                        <textarea class="form-control" rows="5" asp-for="ProductDescription"></textarea>
+                        <br />
+
+                        <button class="btn btn-primary">Ürün Ekle</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
