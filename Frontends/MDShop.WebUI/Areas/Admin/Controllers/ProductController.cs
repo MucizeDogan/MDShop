@@ -112,6 +112,20 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
             return View();
         }
 
+        [Route("ProductListWithCategory")]
+        public async Task<IActionResult> ProductListWithCategory() {
+            ProductViewbagList("Ürün Listesi");
+
+            var client = _httpClientFactory.CreateClient();
+            var res = await client.GetAsync("https://localhost:7070/api/Products/ProductListWithCategory"); 
+            if (res.IsSuccessStatusCode) {
+                var jsonData = await res.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductWithCategoryDto>>(jsonData);
+                return View(values);
+            }
+
+            return View();
+        }
 
         void ProductViewbagList(string v4) {
             ViewBag.v1 = "Ana Sayfa";

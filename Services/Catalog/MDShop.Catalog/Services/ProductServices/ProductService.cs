@@ -39,11 +39,22 @@ namespace MDShop.Catalog.Services.ProductServices {
         }
 
         public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync() {
-            var values = await _productCollection.Find(x => true).ToListAsync();
-            foreach (var item in values) {
-                item.Category = await _categoryCollection.Find<Category>(x => x.CategoryID == item.CategoryID).FirstOrDefaultAsync();
+            //var values = await _productCollection.Find(x => true).ToListAsync();
+            //foreach (var item in values) {
+            //    item.Category = await _categoryCollection.Find(x => x.CategoryID == item.CategoryID).FirstAsync();
+            //}
+            //return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
+
+            var products = await _productCollection.Find(x => true).ToListAsync();
+            var categoryIds = products.Select(x => x.CategoryID).Distinct().ToList();
+
+            var categories = await _categoryCollection.Find(x => categoryIds.Contains(x.CategoryID)).ToListAsync();
+
+            foreach (var product in products) {
+                product.Category = categories.FirstOrDefault(x => x.CategoryID == product.CategoryID);
             }
-            return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
+
+            return _mapper.Map<List<ResultProductsWithCategoryDto>>(products);
         }
 
         public async Task UpdateProductAsync(UpdateProductDto updateProductDto) {
