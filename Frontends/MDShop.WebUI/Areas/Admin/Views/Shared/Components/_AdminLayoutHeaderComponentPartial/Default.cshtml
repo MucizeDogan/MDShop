@@ -1,50 +1,10 @@
-﻿<head>
-    <style>
-        .admin-logo {
-            width: auto; /* Oranlı olarak küçülsün */
-            max-width: 140px; /* En fazla 140px genişlik */
-            height: auto; /* Oran korunsun */
-            display: block; /* Tam hizalama sağla */
-        }
-
-        .logo {
-            display: flex;
-            align-items: center; /* Dikey olarak ortala */
-            justify-content: center; /* Yatayda ortala (eğer sağa yaslı değilse) */
-            padding: 10px 15px; /* Kenar boşlukları ekle */
-            height: 50px; /* Header yüksekliğine göre ayarla */
-        }
-
-        .logo-mini,
-        .logo-lg {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-    </style>
-</head>
-
+﻿
 <header class="main-header dark-bg">
-
-    <!-- Logo -->
-    @* <a href="../index.html" class="logo dark-bg">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><img src="../dist/img/logo.png" alt="Ovio"></span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><img src="../dist/img/logo-lg.png" alt="Ovio"></span>
-    </a> *@
-
-
-
     <a href="../index.html" class="logo dark-bg">
-        <!-- Mini logo for sidebar mini -->
-        <span class="logo-mini">
-            <img src="/images/MDShop_Logo.png" class="admin-logo" alt="MDS Shop">
-        </span>
-        <!-- Full logo for regular state -->
-        <span class="logo-lg">
-            <img src="/images/MDShop_Logo.png" class="admin-logo" alt="MDS Shop">
-        </span>
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><img src="~/images/mulhtishop1.jpg" style="width:50px;height:50px; important!" alt="Ovio"></span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><img src="~/images/mulhtishop1.jpg" style="width:200px;height:50px; important!" alt="Ovio"></span>
     </a>
 
     <!-- Header Navbar -->
@@ -54,7 +14,7 @@
         <div class="pull-left search-box">
             <form action="#" method="get" class="search-form">
                 <div class="input-group">
-                    <input type="text" name="search" class="form-control" placeholder="Search...">
+                    <input type="text" name="search" class="form-control" placeholder="Aranacak Kelimeyi Giriniz...">
                     <span class="input-group-btn">
                         <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i> </button>
                     </span>
@@ -76,7 +36,7 @@
                             <ul class="menu">
                                 <li>
                                     <a href="#">
-                                        <div class="pull-left"><img src="../dist/img/img1.jpg" class="img-circle" alt="User Image"></div>
+                                        <div class="pull-left"><img src="~/images/manlogo.jpg" class="img-circle" alt="User Image"></div>
                                         <h4>Admin</h4>
                                         <p>Lorem ipsum dolor sit amet.</p>
                                         <p><small><i class="fa fa-clock-o"></i> 2 mins</small></p>
@@ -134,11 +94,11 @@
                 <!-- Tasks Menu -->
                 <!-- User Account Menu -->
                 <li class="dropdown user user-menu">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="../dist/img/img1.jpg" class="user-image" alt="User Image"> <span class="hidden-xs">Florence Douglas</span> </a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"> <img src="~/images/manlogo.jpg" class="user-image" alt="User Image"> <span class="hidden-xs">Florence Douglas</span> </a>
                     <ul class="dropdown-menu">
                         <li class="user-header">
-                            <div class="pull-left user-img"><img src="../dist/img/img1.jpg" class="img-responsive" alt="User"></div>
-                            <p class="text-left">Admin<small>florence@gmail.com</small> </p>
+                            <div class="pull-left user-img"><img src="~/images/manlogo.jpg" class="img-responsive" alt="User"></div>
+                            <p class="text-left">Admin<small>mdshop@gmail.com</small> </p>
                             <div class="view-link text-left"><a href="#">View Profile</a> </div>
                         </li>
                         <li><a href="#"><i class="icon-profile-male"></i> My Profile</a></li>
