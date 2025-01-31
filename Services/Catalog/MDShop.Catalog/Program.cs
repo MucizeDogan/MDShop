@@ -1,4 +1,5 @@
 using MDShop.Catalog.Services.CategoryServices;
+using MDShop.Catalog.Services.FeatureSliderServices;
 using MDShop.Catalog.Services.ProductDetailServices;
 using MDShop.Catalog.Services.ProductImageServices;
 using MDShop.Catalog.Services.ProductServices;
@@ -21,6 +22,7 @@ builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
+builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
