@@ -5,6 +5,14 @@
     int count = 0;
 }
 
+<body>
+    <style>
+        td, th {
+            align-content: center;
+        }
+    </style>
+</body>
+
 <section class="content container-fluid">
     <div class="row">
 
@@ -30,7 +38,7 @@
                                 <tr>
                                 <th scope="row">@count</th>
                                 <td>@item.CategoryName</td>
-                                <td><a href="#" class="btn btn-outline-warning">Kategoriye Ait Ürünler</a></td>
+                                    <td><a href="/Admin/Product/ProductListWithCategory/" class="btn btn-outline-warning">Kategoriye Ait Ürünler</a></td>
                                     <td><a href="/Admin/Category/DeleteCategory/@item.CategoryID" class="btn btn-danger btn-rounded" onclick="return confirm('@item.CategoryName Bu kategoriyi silmek istediğinize emin misiniz?')">Sil</a></td>
                                     <td><a href="/Admin/Category/UpdateCategory/@item.CategoryID" class="btn btn-warning btn-rounded">Güncelle</a></td>
                             </tr>
