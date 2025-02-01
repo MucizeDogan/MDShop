@@ -28,7 +28,7 @@ namespace MDShop.WebUI.Services.CatalogServices.FeatureSliderServices {
             await _httpClient.PutAsJsonAsync<UpdateFeatureSliderDto>("featuresliders", updateFeatureSliderDto);
         }
 
-        public async Task FeatureSliderChageStatusToTrue(string id) {
+        public async Task FeatureSliderChangeStatusToTrue(string id) {
             var responseMessage = await _httpClient.GetAsync("featuresliders/" + id);
             if (responseMessage.IsSuccessStatusCode) {
                 var value = await responseMessage.Content.ReadFromJsonAsync<UpdateFeatureSliderDto>();
@@ -40,7 +40,7 @@ namespace MDShop.WebUI.Services.CatalogServices.FeatureSliderServices {
 
         }
 
-        public async Task FeatureSliderChageStatusToFalse(string id) {
+        public async Task FeatureSliderChangeStatusToFalse(string id) {
             var responseMessage = await _httpClient.GetAsync("featuresliders/" + id);
             if (responseMessage.IsSuccessStatusCode) {
                 var value = await responseMessage.Content.ReadFromJsonAsync<UpdateFeatureSliderDto>();
