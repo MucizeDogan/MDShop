@@ -18,6 +18,7 @@
                                 <th>#</th>
                                 <th>Görsel Başlığı</th>
                                 <th>Durum</th>
+                                <th>Sıra</th>
                                 <th>Sil</th>
                                 <th>Güncelle</th>
                                 <th>Pasif Yap</th>
@@ -32,6 +33,7 @@
                                     <th scope="row">@count</th>
                                     <td>@item.Title</td>
                                     <td>@status</td>
+                                    <td>@item.Order</td>
                                     <td><a href="/Admin/FeatureSlider/DeleteFeatureSlider/@item.FeatureSliderId" class="btn btn-danger btn-rounded" onclick="return confirm('@item.Title Bu kategoriyi silmek istediğinize emin misiniz?')">Sil</a></td>
                                     <td><a href="/Admin/FeatureSlider/UpdateFeatureSlider/@item.FeatureSliderId" class="btn btn-warning btn-rounded">Güncelle</a></td>
                                     <td><a href="/Admin/FeatureSlider/FeatureSliderChangeStatusToFalse/@item.FeatureSliderId" class="btn btn-warning btn-rounded">Pasif</a></td>
