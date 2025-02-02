@@ -41,7 +41,11 @@ namespace MDShop.Catalog.Services.FeatureSliderServices {
         }
 
         public async Task<List<ResultFeatureSliderDto>> GetAllFeatureSliderAsync() {
-            var values = await _featureSliderCollection.Find(x => true).ToListAsync();
+            //var values = await _featureSliderCollection.Find(x => true).ToListAsync();
+            var values = await _featureSliderCollection
+                .Find(x => x.Status == true)  // Status true olanları getir
+                .SortBy(x => x.Order)         // Order alanına göre sırala
+                .ToListAsync();
             return _mapper.Map<List<ResultFeatureSliderDto>>(values);
         }
 
