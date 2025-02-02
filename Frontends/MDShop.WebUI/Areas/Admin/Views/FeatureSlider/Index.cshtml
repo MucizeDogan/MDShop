@@ -32,7 +32,7 @@
                                     <th scope="row">@count</th>
                                     <td>@item.Title</td>
                                     <td>@status</td>
-                                    <td><a href="/Admin/FeatureSlider/DeleteFeatureSlider/@item.FeatureSliderId" class="btn btn-danger btn-rounded">Sil</a></td>
+                                    <td><a href="/Admin/FeatureSlider/DeleteFeatureSlider/@item.FeatureSliderId" class="btn btn-danger btn-rounded" onclick="return confirm('@item.Title Bu kategoriyi silmek istediğinize emin misiniz?')">Sil</a></td>
                                     <td><a href="/Admin/FeatureSlider/UpdateFeatureSlider/@item.FeatureSliderId" class="btn btn-warning btn-rounded">Güncelle</a></td>
                                     <td><a href="/Admin/FeatureSlider/FeatureSliderChangeStatusToFalse/@item.FeatureSliderId" class="btn btn-warning btn-rounded">Pasif</a></td>
                                     <td><a href="/Admin/FeatureSlider/FeatureSliderChangeStatusToTrue/@item.FeatureSliderId" class="btn btn-success btn-rounded">Aktif</a></td>
