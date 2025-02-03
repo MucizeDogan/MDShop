@@ -2,7 +2,7 @@
 
 namespace MDShop.Catalog.Services.SpecialOfferServices {
     public interface ISpecialOfferService {
-        Task<List<ResultSpecialOfferDto>> GetAllSpecialOfferAsync();
+        Task<List<ResultSpecialOfferDto>> GetAllSpecialOfferAsync(bool isAdmin);
         Task CreateSpecialOfferAsync(CreateSpecialOfferDto createSpecialOfferDto);
         Task UpdateSpecialOfferAsync(UpdateSpecialOfferDto updateSpecialOfferDto);
         Task DeleteSpecialOfferAsync(string id);

@@ -17,15 +17,16 @@ namespace MDShop.Catalog.Services.SpecialOfferServices {
             _mapper = mapper;
         }
 
-        public async Task<List<ResultSpecialOfferDto>> GetAllSpecialOfferAsync() {
-            //var values = await _specialOfferCollection.Find(x => true).ToListAsync();
-            //return _mapper.Map<List<ResultSpecialOfferDto>>(values);
-
-            var values = await _specialOfferCollection
+        public async Task<List<ResultSpecialOfferDto>> GetAllSpecialOfferAsync(bool isAdmin) {
+            if (isAdmin) {
+                var values = await _specialOfferCollection.Find(x => true).ToListAsync();
+                return _mapper.Map<List<ResultSpecialOfferDto>>(values);
+            }
+            var values2 = await _specialOfferCollection
                 .Find(x => x.Status == true)  // Status true olanları getir
                 .SortBy(x => x.Order)         // Order alanına göre sırala
                 .ToListAsync();
-            return _mapper.Map<List<ResultSpecialOfferDto>>(values);
+            return _mapper.Map<List<ResultSpecialOfferDto>>(values2);
         }
 
         public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto createSpecialOfferDto) {
