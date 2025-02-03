@@ -1,6 +1,6 @@
-﻿@model CreateFeatureSliderDto
+﻿@model CreateSpecialOfferDto
 @{
-    ViewData["Title"] = "CreateFeatureSlider";
+    ViewData["Title"] = "CreateSpecialOffer";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
 }
 
@@ -9,38 +9,39 @@
 
         <div class="col-md-12">
             <div class="chart-box">
-                <h4>Öne Çıkan Slider Görseli Güncelleme Sayfası</h4>
+                <h4>Özel Teklif Ekleme Sayfası</h4>
                 <br />
                 <div class="bs-example" data-example-id="bordered-table">
 
                     <form method="post">
-                        <label>Görsel Başlığı</label>
+                        <label>Özel Teklif Başlığı</label>
                         <input type="text" class="form-control" asp-for="Title" />
                         <br />
 
-                        <label>Görsel Açıklaması</label>
-                        <input type="text" class="form-control" asp-for="Description" />
+                        <label>Özel Teklif Alt Başlığı</label>
+                        <input type="text" class="form-control" asp-for="SubTitle" />
                         <br />
 
-                        <label>Görsel Linki</label>
+                        <label>Özel Teklif Image Url</label>
                         <input type="text" class="form-control" asp-for="ImageUrl" />
                         <br />
 
-                        <label>Görsel Durumu</label>
+                        <label>Özel Teklif Durumu</label>
                         <div>
                             <input type="radio" asp-for="Status" value="true" checked /> Aktif
                             <input type="radio" asp-for="Status" value="false" style="margin-left: 40px" /> Pasif
                         </div>
                         <br />
 
-                        <label>Görsel Sırası</label>
+                        <label>Özel Teklif Sırası</label>
                         <input type="number" class="form-control" asp-for="Order" />
                         <br />
 
-                        <button class="btn btn-primary">Öne Çıkan Slider Görseli Güncelle</button>
+                        <button class="btn btn-primary">Özel Teklif Ekle</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
