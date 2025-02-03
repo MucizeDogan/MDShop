@@ -3,6 +3,7 @@ using MDShop.Catalog.Services.FeatureSliderServices;
 using MDShop.Catalog.Services.ProductDetailServices;
 using MDShop.Catalog.Services.ProductImageServices;
 using MDShop.Catalog.Services.ProductServices;
+using MDShop.Catalog.Services.SpecialOfferServices;
 using MDShop.Catalog.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Options;
@@ -23,6 +24,7 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductDetailService, ProductDetailService>();
 builder.Services.AddScoped<IProductImageService, ProductImageService>();
 builder.Services.AddScoped<IFeatureSliderService, FeatureSliderService>();
+builder.Services.AddScoped<ISpecialOfferService, SpecialOfferService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
