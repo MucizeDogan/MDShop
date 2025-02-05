@@ -38,14 +38,31 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
         [HttpPost]
         [Route("CreateSpecialOffer")]
         public async Task<IActionResult> CreateSpecialOffer(CreateSpecialOfferDto createSpecialOfferDto) {
+            //var client = _httpClientFactory.CreateClient();
+            //var jsonData = JsonConvert.SerializeObject(createSpecialOfferDto);
+            //StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            //var res = await client.PostAsync("https://localhost:7070/api/SpecialOffers", stringContent);
+            //if (res.IsSuccessStatusCode) {
+            //    return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
+            //}
+            //return View();
+
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createSpecialOfferDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
             var res = await client.PostAsync("https://localhost:7070/api/SpecialOffers", stringContent);
+
             if (res.IsSuccessStatusCode) {
                 return RedirectToAction("Index", "SpecialOffer", new { area = "Admin" });
+            } else {
+                // Hata mesajını API'den okuyoruz.
+                var errorMessage = await res.Content.ReadAsStringAsync();
+
+                ModelState.AddModelError("", !string.IsNullOrWhiteSpace(errorMessage) ? errorMessage : "Bu sıra numarasına sahip bir kayıt zaten mevcut.");
+
+                return View();
             }
-            return View();
         }
 
         [Route("DeleteSpecialOffer/{id}")]
