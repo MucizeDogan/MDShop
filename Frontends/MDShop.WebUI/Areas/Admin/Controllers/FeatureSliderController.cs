@@ -67,7 +67,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
             FeatureSliderViewBaglist("Slider (Öne Çıkan Görsel) Listesi");
 
             var client = _httpClientFactory.CreateClient();
-            var res = await client.GetAsync("https://localhost:7070/api/FeatureSliders"); //isteğin yapılacağı adres (port-catalog servisine gidecek)
+            var res = await client.GetAsync("https://localhost:7070/api/FeatureSliders?isAdmin=true"); //isteğin yapılacağı adres (port-catalog servisine gidecek)
             if (res.IsSuccessStatusCode) {
                 var jsonData = await res.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultFeatureSliderDto>>(jsonData);
@@ -94,8 +94,14 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
             // Parametre olarak gönderilen değeri (createFeatureSliderDto) aldık json a dönüştürdük. Sonra bu değeri content olarak atadık. Neyin content olarak atandığı -> jsonData, bu atanan değerin dil desteği -> Encoding.UTF8, bunun mediatr ü ne olduğu -> application/json
             if (res.IsSuccessStatusCode) {
                 return RedirectToAction("Index", "FeatureSlider", new { area = "Admin" });
+            } else {
+                // Hata mesajını API'den okuyoruz.
+                var errorMessage = await res.Content.ReadAsStringAsync();
+
+                ModelState.AddModelError("", !string.IsNullOrWhiteSpace(errorMessage) ? errorMessage : "Bu sıra numarasına sahip bir kayıt zaten mevcut.");
+
+                return View();
             }
-            return View();
         }
 
         [Route("DeleteFeatureSlider/{id}")]

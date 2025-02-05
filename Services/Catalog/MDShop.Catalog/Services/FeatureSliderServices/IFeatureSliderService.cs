@@ -2,7 +2,7 @@
 
 namespace MDShop.Catalog.Services.FeatureSliderServices {
     public interface IFeatureSliderService {
-        Task<List<ResultFeatureSliderDto>> GetAllFeatureSliderAsync();
+        Task<List<ResultFeatureSliderDto>> GetAllFeatureSliderAsync(bool isAdmin);
         Task CreateFeatureSliderAsync(CreateFeatureSliderDto createFeatureSliderDto);
         Task UpdateFeatureSliderAsync(UpdateFeatureSliderDto updateFeatureSliderDto);
         Task DeleteFeatureSliderAsync(string id);

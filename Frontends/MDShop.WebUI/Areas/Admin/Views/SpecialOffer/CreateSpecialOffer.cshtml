@@ -35,6 +35,7 @@
 
                         <label>Özel Teklif Sırası</label>
                         <input type="number" class="form-control" asp-for="Order" />
+                        @Html.ValidationMessageFor(model => model.Order, "", new { @class = "text-danger" })
                         <br />
 
                         <button class="btn btn-primary">Özel Teklif Ekle</button>

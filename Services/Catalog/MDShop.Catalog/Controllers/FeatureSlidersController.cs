@@ -13,8 +13,8 @@ namespace MDShop.Catalog.Controllers {
         }
 
         [HttpGet]
-        public async Task<IActionResult> FeatureSliderList() {
-            var values = await _FeatureSliderService.GetAllFeatureSliderAsync();
+        public async Task<IActionResult> FeatureSliderList(bool isAdmin) {
+            var values = await _FeatureSliderService.GetAllFeatureSliderAsync(isAdmin);
             return Ok(values);
         }
 

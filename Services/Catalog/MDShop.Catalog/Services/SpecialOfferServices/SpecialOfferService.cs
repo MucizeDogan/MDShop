@@ -30,8 +30,17 @@ namespace MDShop.Catalog.Services.SpecialOfferServices {
         }
 
         public async Task CreateSpecialOfferAsync(CreateSpecialOfferDto createSpecialOfferDto) {
-            var value = _mapper.Map<SpecialOffer>(createSpecialOfferDto);
-            await _specialOfferCollection.InsertOneAsync(value);
+
+            var exists = await _specialOfferCollection
+                .Find(x => x.Order == createSpecialOfferDto.Order)
+                .AnyAsync(); // daha önce bu order a (sıraya) sahip bir kayıt var mı
+
+            if (!exists) {
+                var value = _mapper.Map<SpecialOffer>(createSpecialOfferDto);
+                await _specialOfferCollection.InsertOneAsync(value);
+            } else {
+                throw new Exception("Bu sıra numarasına sahip bir kayıt zaten mevcut.");
+            }
         }
 
         public async Task DeleteSpecialOfferAsync(string id) {
