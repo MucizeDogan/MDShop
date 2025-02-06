@@ -8,5 +8,6 @@ namespace MDShop.DtoLayer.CatalogDtos.CategoryDto {
     public class UpdateCategoryDto {
         public string CategoryID { get; set; }
         public string CategoryName { get; set; }
+        public string ImageUrl { get; set; }
     }
 }

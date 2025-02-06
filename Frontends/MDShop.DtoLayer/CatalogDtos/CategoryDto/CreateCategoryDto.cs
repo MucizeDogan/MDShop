@@ -7,5 +7,6 @@ using System.Threading.Tasks;
 namespace MDShop.DtoLayer.CatalogDtos.CategoryDto {
     public class CreateCategoryDto {
         public string CategoryName { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
