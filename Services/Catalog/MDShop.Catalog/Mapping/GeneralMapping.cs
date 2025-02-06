@@ -2,6 +2,7 @@
 using MDShop.Catalog.Dtos.CategoryDtos;
 using MDShop.Catalog.Dtos.FeatureDtos;
 using MDShop.Catalog.Dtos.FeatureSliderDtos;
+using MDShop.Catalog.Dtos.OfferDiscountDtos;
 using MDShop.Catalog.Dtos.ProductDetailDtos;
 using MDShop.Catalog.Dtos.ProductDtos;
 using MDShop.Catalog.Dtos.ProductImageDtos;
@@ -48,6 +49,11 @@ namespace MDShop.Catalog.Mapping {
             CreateMap<Feature, CreateFeatureDto>().ReverseMap();
             CreateMap<Feature, UpdateFeatureDto>().ReverseMap();
             CreateMap<Feature, GetByIdFeatureDto>().ReverseMap();
+
+            CreateMap<OfferDiscount, ResultOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, CreateOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, UpdateOfferDiscountDto>().ReverseMap();
+            CreateMap<OfferDiscount, GetByIdOfferDiscountDto>().ReverseMap();
 
         }
     }
