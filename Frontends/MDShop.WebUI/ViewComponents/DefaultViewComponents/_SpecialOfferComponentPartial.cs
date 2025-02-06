@@ -12,7 +12,7 @@ namespace MDShop.WebUI.ViewComponents.DefaultViewComponents {
 
         public async Task<IViewComponentResult> InvokeAsync() {
             var client = _httpClientFactory.CreateClient();
-            var res = await client.GetAsync("https://localhost:7070/api/SpecialOffers?isAdmin=true");
+            var res = await client.GetAsync("https://localhost:7070/api/SpecialOffers?isAdmin=false");
             if (res.IsSuccessStatusCode) {
                 var jsonData = await res.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultSpecialOfferDto>>(jsonData);
