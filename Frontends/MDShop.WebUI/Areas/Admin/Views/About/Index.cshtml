@@ -1,0 +1,56 @@
+﻿@model List<ResultAboutDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    }
+
+<body>
+    <style>
+        td, th {
+            align-content: center;
+        }
+    </style>
+</body>
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Hakkımızda Listesi</h4>
+                <p>Hakkımızda ile ilgili işlemleri aşağıdaki tablo üzerinden yapabilirsiniz...</p>
+
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Açıklama</th>
+                                <th>Kısa Açıklama</th>
+                                <th>Adres</th>
+                                <th>Email</th>
+                                <th>Telefon</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model) {
+                                <tr>
+                                    <td>@item.Description</td>
+                                    <td>@item.Description_Short</td>
+                                    <td>@item.Address</td>
+                                    <td>@item.Email</td>
+                                    <td>@item.Phone</td>
+                                    <td><a href="/Admin/About/DeleteAbout/@item.AboutId" class="btn btn-danger btn-rounded" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+                                    <td><a href="/Admin/About/UpdateAbout/@item.AboutId" class="btn btn-warning btn-rounded">Güncelle</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                    <td><a href="/Admin/About/CreateAbout/" class="btn btn-primary btn-rounded">Yeni Hakkımızda Girişi</a></td>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
