@@ -28,19 +28,19 @@ namespace MDShop.Catalog.Controllers {
         [HttpPost]
         public async Task<IActionResult> CreateAbout(CreateAboutDto createAboutDto) {
             await _aboutService.CreateAboutAsync(createAboutDto);
-            return Ok("Hakkımızda başarıyla eklendi");
+            return Ok("Hakkımızda alanı başarıyla eklendi");
         }
 
         [HttpDelete]
         public async Task<IActionResult> DeleteAbout(string id) {
             await _aboutService.DeleteAboutAsync(id);
-            return Ok("Hakkımızda başarıyla silindi");
+            return Ok("Hakkımızda alanı başarıyla silindi");
         }
 
         [HttpPut]
         public async Task<IActionResult> UpdateAbout(UpdateAboutDto updateAboutDto) {
             await _aboutService.UpdateAboutAsync(updateAboutDto);
-            return Ok("Hakkımızda başarıyla güncellendi");
+            return Ok("Hakkımızda alanı başarıyla güncellendi");
         }
     }
 }
