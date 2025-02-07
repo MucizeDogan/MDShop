@@ -51,5 +51,11 @@ namespace MDShop.Catalog.Controllers {
             return Ok(values);
         }
 
+        [HttpGet("GetProductsWithCategoryByCatetegoryId")]
+        public async Task<IActionResult> GetProductsWithCategoryByCatetegoryId(string id) {
+            var values = await _productService.GetProductsWithCategoryByCatetegoryIdAsync(id);
+            return Ok(values);
+        }
+
     }
 }

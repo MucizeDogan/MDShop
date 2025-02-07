@@ -38,6 +38,11 @@ namespace MDShop.Catalog.Services.ProductServices {
             return _mapper.Map<GetByIdProductDto>(value);
         }
 
+        public async Task UpdateProductAsync(UpdateProductDto updateProductDto) {
+            var value = _mapper.Map<Product>(updateProductDto);
+            await _productCollection.FindOneAndReplaceAsync(x => x.ProductID == updateProductDto.ProductID, value);
+        }
+
         public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryAsync() {
             //var values = await _productCollection.Find(x => true).ToListAsync();
             //foreach (var item in values) {
@@ -57,9 +62,14 @@ namespace MDShop.Catalog.Services.ProductServices {
             return _mapper.Map<List<ResultProductsWithCategoryDto>>(products);
         }
 
-        public async Task UpdateProductAsync(UpdateProductDto updateProductDto) {
-            var value = _mapper.Map<Product>(updateProductDto);
-            await _productCollection.FindOneAndReplaceAsync(x => x.ProductID == updateProductDto.ProductID, value);
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryByCatetegoryIdAsync(string CategoryId) {
+            var values = await _productCollection.Find(x => x.CategoryID == CategoryId).ToListAsync();
+
+            foreach (var item in values) {
+                item.Category = await _categoryCollection.Find<Category>(x => x.CategoryID == item.CategoryID).FirstAsync();
+            }
+
+            return _mapper.Map<List<ResultProductsWithCategoryDto>>(values);
         }
     }
 }
