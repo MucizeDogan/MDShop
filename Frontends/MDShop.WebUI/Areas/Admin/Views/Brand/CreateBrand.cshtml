@@ -1,0 +1,44 @@
+﻿@model CreateBrandDto
+@{
+    ViewData["Title"] = "CreateBrand";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+}
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <h4>Marka Ekleme Sayfası</h4>
+                <br />
+                <div class="bs-example" data-example-id="bordered-table">
+
+                    <form method="post">
+                        <label>Marka Adı</label>
+                        <input type="text" class="form-control" asp-for="Name" />
+                        <br />
+
+                        <label>Marka Image Url</label>
+                        <input type="text" class="form-control" asp-for="ImageUrl" />
+                        <br />
+
+                        <label>Marka Durumu</label>
+                        <div>
+                            <input type="radio" asp-for="Status" value="true" checked /> Aktif
+                            <input type="radio" asp-for="Status" value="false" style="margin-left: 40px" /> Pasif
+                        </div>
+                        <br />
+
+                        <label>Marka Sırası</label>
+                        <input type="number" class="form-control" asp-for="Order" />
+                        @Html.ValidationMessageFor(model => model.Order, "", new { @class = "text-danger" })
+                        <br />
+
+                        <button class="btn btn-primary">Marka Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
