@@ -1,0 +1,57 @@
+﻿using MDShop.Catalog.Dtos.BrandDtos;
+using MDShop.Catalog.Services.BrandServices;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace MDShop.Catalog.Controllers {
+    [Route("api/[controller]")]
+    [ApiController]
+    public class BrandsController : ControllerBase {
+        private readonly IBrandService _brandService;
+        public BrandsController(IBrandService BrandService) {
+            _brandService = BrandService;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> BrandList(bool isAdmin) {
+            var values = await _brandService.GetAllBrandAsync(isAdmin);
+            return Ok(values);
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetBrandById(string id) {
+            var values = await _brandService.GetByIdBrandAsync(id);
+            return Ok(values);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateBrand(CreateBrandDto createBrandDto) {
+            await _brandService.CreateBrandAsync(createBrandDto);
+            return Ok("Marka başarıyla eklendi");
+        }
+
+        [HttpDelete]
+        public async Task<IActionResult> DeleteBrand(string id) {
+            await _brandService.DeleteBrandAsync(id);
+            return Ok("Marka başarıyla silindi");
+        }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdateBrand(UpdateBrandDto updateBrandDto) {
+            await _brandService.UpdateBrandAsync(updateBrandDto);
+            return Ok("Marka başarıyla güncellendi");
+        }
+
+        [HttpGet("BrandChangeStatusToTrue/{id}")]
+        public async Task<IActionResult> BrandChangeStatusToTrue(string id) {
+            await _brandService.BrandChangeStatusToTrue(id);
+            return Ok("Marka durumu başarıyla TRUE oldu");
+        }
+
+        [HttpGet("BrandChangeStatusToFalse/{id}")]
+        public async Task<IActionResult> BrandChangeStatusToFalse(string id) {
+            await _brandService.BrandChangeStatusToFalse(id);
+            return Ok("Marka durumu başarıyla FALSE oldu");
+        }
+    }
+}
