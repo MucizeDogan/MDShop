@@ -1,4 +1,4 @@
-﻿@model List<ResultFeatureSliderDto>
+﻿@model List<ResultBrandDto>
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
@@ -10,6 +10,10 @@
     <style>
         td, th {
             align-content: center;
+        }
+        img{
+          width:fit-content;
+          height:50px;
         }
     </style>
 </body>
@@ -24,7 +28,8 @@
                         <thead>
                             <tr>
                                 <th>#</th>
-                                <th>Görsel Başlığı</th>
+                                <th>Marka Adı</th>
+                                <th>Marka Görsel</th>
                                 <th>Durum</th>
                                 <th>Sıra</th>
                                 <th>Sil</th>
@@ -39,18 +44,20 @@
                                 status = item.Status == true ? "Aktif" : "Pasif";
                                 <tr>
                                     <th scope="row">@count</th>
-                                    <td>@item.Title</td>
+                                    <td>@item.Name</td>
+                                    <td><img src="@item.ImageUrl" /></td>
                                     <td>@status</td>
                                     <td>@item.Order</td>
-                                    <td><a href="/Admin/FeatureSlider/DeleteFeatureSlider/@item.FeatureSliderId" class="btn btn-danger btn-rounded" onclick="return confirm('@item.Title Bu kategoriyi silmek istediğinize emin misiniz?')">Sil</a></td>
-                                    <td><a href="/Admin/FeatureSlider/UpdateFeatureSlider/@item.FeatureSliderId" class="btn btn-warning btn-rounded">Güncelle</a></td>
-                                    <td><a href="/Admin/FeatureSlider/FeatureSliderChangeStatusToFalse/@item.FeatureSliderId" class="btn btn-warning btn-rounded">Pasif</a></td>
-                                    <td><a href="/Admin/FeatureSlider/FeatureSliderChangeStatusToTrue/@item.FeatureSliderId" class="btn btn-success btn-rounded">Aktif</a></td>
+                                    <td><a href="/Admin/Brand/DeleteBrand/@item.BrandId" class="btn btn-danger btn-rounded" onclick="return confirm('@item.Name bunu silmek istediğinize emin misiniz?')">Sil</a></td>
+                                    <td><a href="/Admin/Brand/UpdateBrand/@item.BrandId" class="btn btn-warning btn-rounded">Güncelle</a></td>
+                                    <td><a href="/Admin/Brand/BrandChangeStatusToFalse/@item.BrandId" class="btn btn-warning btn-rounded">Pasif</a></td>
+                                    <td><a href="/Admin/Brand/BrandChangeStatusToTrue/@item.BrandId" class="btn btn-success btn-rounded">Aktif</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Admin/FeatureSlider/CreateFeatureSlider/" class="btn btn-primary">Yeni Slider Görsel Girişi</a>
+                    <br />
+                    <a href="/Admin/Brand/CreateBrand/" class="btn btn-primary">Yeni Marka Girişi</a>
                 </div>
             </div>
         </div>
