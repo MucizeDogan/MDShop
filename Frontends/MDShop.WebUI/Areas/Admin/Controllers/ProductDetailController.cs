@@ -20,7 +20,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
         public async Task<IActionResult> UpdateProductDetail(string id) {
             ProductDetailViewbagList("Ürün Bilgisi Güncelleme");
             var client = _httpClientFactory.CreateClient();
-            var res = await client.GetAsync("https://localhost:7070/api/ProductDetails/" + id);
+            var res = await client.GetAsync("https://localhost:7070/api/ProductDetails/GetByProductIdProductDetail?id=" + id);
             if (res.IsSuccessStatusCode) {
                 var jsonData = await res.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<UpdateProductDetailDto>(jsonData);
