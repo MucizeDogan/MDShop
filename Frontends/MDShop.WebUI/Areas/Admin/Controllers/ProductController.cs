@@ -57,7 +57,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var res = await client.PostAsync("https://localhost:7070/api/Products/", stringContent);
             if (res.IsSuccessStatusCode) {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
+                return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });
             }
             return View();
         }
@@ -67,7 +67,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
             var client = _httpClientFactory.CreateClient();
             var res = await client.DeleteAsync("https://localhost:7070/api/Products?id=" + id);
             if (res.IsSuccessStatusCode) {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
+                return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });
             }
             return View();
         }
@@ -107,7 +107,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var res = await client.PutAsync("https://localhost:7070/api/Products/", stringContent);
             if (res.IsSuccessStatusCode) {
-                return RedirectToAction("Index", "Product", new { area = "Admin" });
+                return RedirectToAction("ProductListWithCategory", "Product", new { area = "Admin" });
             }
             return View();
         }

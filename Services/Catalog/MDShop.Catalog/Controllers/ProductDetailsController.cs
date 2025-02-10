@@ -43,5 +43,11 @@ namespace MDShop.Catalog.Controllers {
             await _productDetailService.UpdateProductDetailAsync(updateProductDetailDto);
             return Ok("Ürün detayı başarıyla güncellendi");
         }
+
+        [HttpGet("GetByProductIdProductDetail")]
+        public async Task<IActionResult> GetByProductIdProductDetail(string id) {
+            var values = await _productDetailService.GetByProductIdProductDetailAsync(id);
+            return Ok(values);
+        }
     }
 }
