@@ -40,5 +40,10 @@ namespace MDShop.Catalog.Services.ProductImageServices {
             var value = _mapper.Map<ProductImage>(updateProductImageDto);
             await _productImageCollection.FindOneAndReplaceAsync(x => x.ProductImageID == updateProductImageDto.ProductImageID, value);
         }
+
+        public async Task<GetByIdProductImageDto> GetByProductIdProductImageAsync(string id) {
+            var values = await _productImageCollection.Find(x => x.ProductId == id).FirstOrDefaultAsync();
+            return _mapper.Map<GetByIdProductImageDto>(values);
+        }
     }
 }
