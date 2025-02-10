@@ -55,7 +55,6 @@ namespace MDShop.Comment.Controllers {
             return Ok(commentDto);
         }
 
- 
         [HttpPut]
         public IActionResult UpdateComment(UpdateCommentDto updateCommentDto) {
             var comment = _context.UserComments.Find(updateCommentDto.UserCommentId);
@@ -66,6 +65,28 @@ namespace MDShop.Comment.Controllers {
             _mapper.Map(updateCommentDto, comment);
             _context.SaveChanges();
             return Ok("Yorum başarıyla güncellendi");
+        }
+
+        [HttpGet("StatusChangeToFalse/{id}")]
+        public IActionResult StatusChangeToFalse(int id) {
+            var comment = _context.UserComments.Find(id);
+            if (comment == null) {
+                return NotFound("Yorum bulunamadı");
+            }
+            comment.Status = false;
+            _context.SaveChanges();
+            return Ok("Yorumun durumu başarıyla FALSE oldu");
+        }
+
+        [HttpGet("StatusChangeToTrue/{id}")]
+        public IActionResult StatusChangeToTrue(int id) {
+            var comment = _context.UserComments.Find(id);
+            if (comment == null) {
+                return NotFound("Yorum bulunamadı");
+            }
+            comment.Status = true;
+            _context.SaveChanges();
+            return Ok("Yorumun durumu başarıyla TRUE oldu");
         }
 
 

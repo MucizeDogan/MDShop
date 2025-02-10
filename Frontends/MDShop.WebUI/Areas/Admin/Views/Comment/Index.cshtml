@@ -1,0 +1,63 @@
+﻿@model List<ResultCommentDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Areas/Admin/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+    string status = "";
+}
+
+<body>
+    <style>
+        td, th {
+            align-content: center;
+        }
+    </style>
+</body>
+
+<section class="content container-fluid">
+    <div class="row">
+
+        <div class="col-md-12">
+            <div class="chart-box">
+                <div class="bs-example" data-example-id="bordered-table">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Kullanıcı</th>
+                                <th>Yorum</th>
+                                <th>Tarih</th>
+                                <th>Durum</th>
+                                <th>Sil</th>
+                                <th>Güncelle</th>
+                                <th>Pasif Yap</th>
+                                <th>Aktif Yap</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model) {
+                                count++;
+                                status = item.Status == true ? "Aktif" : "Pasif";
+                                <tr>
+                                    <th scope="row">@count</th>
+                                    <td>@item.NameSurname</td>
+                                    <td>@item.CommentDetail</td>
+                                    <td>@item.CreatedDate.ToShortDateString()</td>
+                                    <td>@status</td>
+                                    <td><a href="/Admin/Comment/DeleteComment/@item.UserCommentId" class="btn btn-danger btn-rounded" onclick="return confirm('Silmek istediğinize emin misiniz?')">Sil</a></td>
+                                    <td><a href="/Admin/Comment/UpdateComment/@item.UserCommentId" class="btn btn-warning btn-rounded">Güncelle</a></td>
+                                    <td><a href="/Admin/Comment/StatusChangeToFalse/@item.UserCommentId" class="btn btn-warning btn-rounded">Pasif</a></td>
+                                    <td><a href="/Admin/Comment/StatusChangeToTrue/@item.UserCommentId" class="btn btn-success btn-rounded">Aktif</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
