@@ -40,7 +40,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
         [Route("DeleteComment/{id}")]
         public async Task<IActionResult> DeleteComment(string id) {
             var client = _httpClientFactory.CreateClient();
-            var res = await client.DeleteAsync("https://localhost:7155/api/Comments?id=" + id);
+            var res = await client.DeleteAsync("https://localhost:7155/api/Comments/" + id);
             if (res.IsSuccessStatusCode) {
                 return RedirectToAction("Index", "Comment", new { area = "Admin" });
             }

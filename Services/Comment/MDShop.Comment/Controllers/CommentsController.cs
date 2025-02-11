@@ -89,6 +89,27 @@ namespace MDShop.Comment.Controllers {
             return Ok("Yorumun durumu başarıyla TRUE oldu");
         }
 
+        //[HttpGet("CommentListByProductId/{id}")]
+        //public IActionResult CommentListByProductId(string id, bool isAdmin) {
+        //    if (isAdmin) {
+        //        var value = _context.UserComments.Where(x => x.ProductId == id).ToList();
+        //        return Ok(value);
+        //    }
+        //    var value2 = _context.UserComments.Where(x => x.ProductId == id && x.Status==true).ToList();
+        //    return Ok(value2);
+        //}
+
+        [HttpGet("CommentListByProductId/{id}")]
+        public IActionResult CommentListByProductId(string id, [FromQuery] bool isAdmin = false) {
+            var query = _context.UserComments.Where(x => x.ProductId == id);
+
+            if (!isAdmin) {
+                query = query.Where(x => x.Status == true);
+            }
+
+            var comments = query.ToList();
+            return Ok(comments);
+        }
 
     }
 }
