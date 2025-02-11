@@ -1,5 +1,5 @@
-﻿using MDShope.IdentityServer.Dtos;
-using MDShope.IdentityServer.Models;
+﻿using MDShop.IdentityServer.Dtos;
+using MDShop.IdentityServer.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -8,8 +8,9 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using static IdentityServer4.IdentityServerConstants;
 
-namespace MDShope.IdentityServer.Controllers {
-    [Authorize(LocalApi.PolicyName)]
+namespace MDShop.IdentityServer.Controllers {
+    //[Authorize(LocalApi.PolicyName)]
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class RegistersController : ControllerBase {

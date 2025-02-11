@@ -6,14 +6,14 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 using IdentityModel;
-using MDShope.IdentityServer.Data;
-using MDShope.IdentityServer.Models;
+using MDShop.IdentityServer.Data;
+using MDShop.IdentityServer.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
-namespace MDShope.IdentityServer
+namespace MDShop.IdentityServer
 {
     public class SeedData
     {

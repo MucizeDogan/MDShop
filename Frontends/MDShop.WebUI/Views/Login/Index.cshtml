@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDSShop - Kayıt İşlemi</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/site2.css" rel="stylesheet">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Giriş Yap</h1>
+        <form method="post">
+            @if (ViewBag.ErrorMessage != null) {
+                <div class="alert alert-danger" role="alert">
+                    @ViewBag.ErrorMessage
+                </div>
+            }
+            @* <input type="text" class="form-control" placeholder="Kullanıcı Adı" asp-for="Username" required>
+            <input type="password" class="form-control" placeholder="Şifre" asp-for="Password" required> *@
+            <button type="submit" class="btn btn-primary">Giriş Yap</button>
+            <br /> <br />
+
+            <a href=" /Register/Index/">Kayıt Ol</a>
+
+        </form>
+    </div>
+</body>
+</html>

@@ -3,8 +3,8 @@
 
 
 using IdentityServer4;
-using MDShope.IdentityServer.Data;
-using MDShope.IdentityServer.Models;
+using MDShop.IdentityServer.Data;
+using MDShop.IdentityServer.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -13,7 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace MDShope.IdentityServer
+namespace MDShop.IdentityServer
 {
     public class Startup
     {
