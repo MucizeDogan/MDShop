@@ -45,7 +45,7 @@ namespace MDShop.WebUI.Controllers {
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
             var responseMessage = await client.PostAsync("https://localhost:7155/api/Comments", stringContent);
             if (responseMessage.IsSuccessStatusCode) {
-                return RedirectToAction("Index", "Default");
+                return RedirectToAction("ProductDetail", "ProductList", new { id = createCommentDto.ProductId });
             }
             return View();
         }
