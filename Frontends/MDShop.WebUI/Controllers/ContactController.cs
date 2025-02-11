@@ -1,8 +1,33 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MDShop.DtoLayer.CatalogDtos.ContactDtos;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace MDShop.WebUI.Controllers {
     public class ContactController : Controller {
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public ContactController(IHttpClientFactory httpClientFactory) {
+            _httpClientFactory = httpClientFactory;
+        }
+
+        [HttpGet]
         public IActionResult Index() {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Index(CreateContactDto createContactDto) {
+            createContactDto.isRead = false;
+            createContactDto.SendDate = DateTime.Now;
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createContactDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var res = await client.PostAsync("https://localhost:7070/api/Contacts", stringContent);
+            
+            if (res.IsSuccessStatusCode) {
+                return RedirectToAction("Index", "Contact");
+            }
             return View();
         }
     }
