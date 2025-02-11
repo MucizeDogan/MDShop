@@ -1,6 +1,7 @@
 using MDShop.Catalog.Services.AboutServices;
 using MDShop.Catalog.Services.BrandServices;
 using MDShop.Catalog.Services.CategoryServices;
+using MDShop.Catalog.Services.ContactServices;
 using MDShop.Catalog.Services.FeatureServices;
 using MDShop.Catalog.Services.FeatureSliderServices;
 using MDShop.Catalog.Services.OfferDiscountServices;
@@ -33,6 +34,7 @@ builder.Services.AddScoped<IFeatureService, FeatureService>();
 builder.Services.AddScoped<IOfferDiscountService, OfferDiscountService>();
 builder.Services.AddScoped<IBrandService, BrandService>();
 builder.Services.AddScoped<IAboutService, AboutService>();
+builder.Services.AddScoped<IContactService, ContactService>();
 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
