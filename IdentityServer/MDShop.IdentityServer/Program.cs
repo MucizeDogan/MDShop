@@ -12,7 +12,7 @@ using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.Linq;
 
-namespace MDShope.IdentityServer
+namespace MDShop.IdentityServer
 {
     public class Program
     {

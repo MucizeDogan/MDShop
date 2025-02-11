@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateRegisterDto
 @{
     Layout = null;
 }
@@ -13,8 +13,6 @@
 <body>
     <div class="login-container">
         <h1>Kayıt Ol</h1>
-        <p><strong>MDSShop</strong> üzerinden işlemlerinizi gerçekleştirebilmek için <strong>Kayıt olmanız</strong> gerekmektedir.</p>
-
         <form method="post">
             @if (ViewBag.Errors != null) {
                 <div class="alert alert-danger">
@@ -26,16 +24,19 @@
                 </div>
             }
 
-            <input type="text" id="full-name"   class="form-control" placeholder="Adınız" required>
-            <input type="text" id="full-name"   class="form-control" placeholder="Soyadınız" required>
-            @* <input type="text" id="full-name"   class="form-control" placeholder="Kullanıcı Adınız" required> *@
-            <input type="text" id="your-email"  class="form-control" placeholder="Email Adresiniz" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
-            <input type="password" id="password"  class="form-control" placeholder="Şifreniz" required>
-            <input type="password" id="password2" class="form-control" placeholder="Şifre Tekrar" required>
+            <input type="text" id="name" asp-for="Name" class="form-control" placeholder="Adınız" required>
+            <input type="text" id="surname" asp-for="Surname" class="form-control" placeholder="Soyadınız" required>
+            <input type="text" id="fullusername" asp-for="Username" class="form-control" placeholder="Kullanıcı Adınız" required>
+            <input type="text" id="email" asp-for="Email" class="form-control" placeholder="Email Adresiniz" required pattern="[^@@]+@@[^@@]+.[a-zA-Z]{2,6}">
+            <input type="password" id="password" asp-for="Password" class="form-control" placeholder="Şifreniz" required>
+            <input type="password" id="confirmpassword" asp-for="ConfirmPassword" class="form-control" placeholder="Şifreniz Tekrar" required>
 
             <button type="submit" class="btn btn-primary">Kayıt Ol</button>
+
             <br /> <br />
-            <a href="/Login/Index/">Zaten bir hesabım var</a>
+
+            <a href="/Login/Index/">Zaten hesabım var</a>
+
         </form>
 
         @* <div class="password-policy mt-3">
