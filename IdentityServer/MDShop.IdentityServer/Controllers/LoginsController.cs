@@ -1,5 +1,6 @@
 ﻿using MDShop.IdentityServer.Dtos;
 using MDShop.IdentityServer.Models;
+using MDShop.IdentityServer.Tools;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -23,12 +24,12 @@ namespace MDShop.IdentityServer.Controllers {
             var user = await _userManager.FindByNameAsync(userLoginDto.Username);
 
             if (result.Succeeded) {
-                //GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
-                //model.Username = userLoginDto.Username;
-                //model.Id = user.Id;
-                //var token = JwtTokenGenerator.GenerateToken(model);
-                //return Ok(token);
-                return Ok("Giriş Başarılı");
+                GetCheckAppUserViewModel model = new GetCheckAppUserViewModel();
+                model.Username = userLoginDto.Username;
+                model.Id = user.Id;
+                var token = JwtTokenGenerator.GenerateToken(model);
+                return Ok(token);
+                
             } else {
                 return Ok("Kullanıcı Adı veya Şifre Hatalı");
             }

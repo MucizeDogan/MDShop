@@ -1,4 +1,4 @@
-﻿
+﻿@model CreateLoginDto
 @{
     Layout = null;
 }
@@ -21,8 +21,8 @@
                     @ViewBag.ErrorMessage
                 </div>
             }
-            @* <input type="text" class="form-control" placeholder="Kullanıcı Adı" asp-for="Username" required>
-            <input type="password" class="form-control" placeholder="Şifre" asp-for="Password" required> *@
+            <input type="text" class="form-control" placeholder="Kullanıcı Adı" asp-for="Username" required>
+            <input type="password" class="form-control" placeholder="Şifre" asp-for="Password" required>
             <button type="submit" class="btn btn-primary">Giriş Yap</button>
             <br /> <br />
 
