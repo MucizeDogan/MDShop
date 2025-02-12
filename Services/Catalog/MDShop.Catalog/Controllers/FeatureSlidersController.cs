@@ -1,9 +1,11 @@
 ﻿using MDShop.Catalog.Dtos.FeatureSliderDtos;
 using MDShop.Catalog.Services.FeatureSliderServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MDShop.Catalog.Controllers {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class FeatureSlidersController : ControllerBase {

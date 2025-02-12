@@ -1,5 +1,6 @@
 ﻿using MDShop.DtoLayer.IdentityDtos.LoginDtos;
 using MDShop.WebUI.Models;
+using MDShop.WebUI.Services.LoginServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
@@ -12,9 +13,11 @@ using System.Text.Json;
 namespace MDShop.WebUI.Controllers {
     public class LoginController : Controller {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ILoginService _loginService;
 
-        public LoginController(IHttpClientFactory httpClientFactory) {
+        public LoginController(IHttpClientFactory httpClientFactory, ILoginService loginService) {
             _httpClientFactory = httpClientFactory;
+            _loginService = loginService;
         }
 
         [HttpGet]
@@ -47,6 +50,7 @@ namespace MDShop.WebUI.Controllers {
                         };
 
                         await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
+                        var id = _loginService.GetUserId; // giriş yapan kullanıcının id değerini alıyoruz
                         return RedirectToAction("Index", "Default");
                     }
                 }
