@@ -1,9 +1,11 @@
 ﻿using MDShop.Catalog.Dtos.OfferDiscountDtos;
 using MDShop.Catalog.Services.OfferDiscountServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MDShop.Catalog.Controllers {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class OfferDiscountsController : ControllerBase {

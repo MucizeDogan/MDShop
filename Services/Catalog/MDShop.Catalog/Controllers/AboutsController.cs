@@ -1,9 +1,11 @@
 ﻿using MDShop.Catalog.Dtos.AboutDtos;
 using MDShop.Catalog.Services.AboutServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MDShop.Catalog.Controllers {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AboutsController : ControllerBase {
