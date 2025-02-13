@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
 
 namespace MDShop.WebUI.Controllers {
     public class TestController : Controller {
@@ -37,7 +38,12 @@ namespace MDShop.WebUI.Controllers {
             }
             #endregion
 
+            // Bu regionda gelen tokenı okutuyoruz
+
             var client = _httpClientFactory.CreateClient();
+
+            client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token); // BU ÖNEMLİİİİİ postmandeki Authorization kısmındaki Header Prefix i girmiş oluyoruz
+
             var res = await client.GetAsync("https://localhost:7070/api/Categories");
             if (res.IsSuccessStatusCode) {
                 var jsonData = await res.Content.ReadAsStringAsync();

@@ -1,8 +1,8 @@
 ﻿namespace MDShop.WebUI.Settings {
     public class ClientSettings {
-        public Client MultiShopVisitorClient { get; set; }
-        public Client MultiShopManagerClient { get; set; }
-        public Client MultiShopAdminClient { get; set; }
+        public Client MDShopVisitorClient { get; set; }
+        public Client MDShopManagerClient { get; set; }
+        public Client MDShopAdminClient { get; set; }
 
         public class Client {
             public string ClientId { get; set; }
