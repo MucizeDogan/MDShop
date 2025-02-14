@@ -1,0 +1,11 @@
+{
+  "Routes": [
+    
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:5000"
+  }
+}
+// Upstream; client tarafýndan bize gelen isteðin olduðu kýsým.
+// Downstream; bu gelen isteði Ocelot da nasýl karþýlayýp nasýl geri göndereceðiz (Requeste vereceðimiz yanýt.)
+// Burada bütün mikroservislerimize daðýtým yapcaðýz.

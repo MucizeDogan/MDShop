@@ -33,7 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IdentityServer", "IdentityS
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Requirements", "Requirements", "{F58E2CBF-2ABE-4C2D-891F-9012ECF30933}"
 	ProjectSection(SolutionItems) = preProject
-		OcelotLink.txt = OcelotLink.txt
+		Ocelot Code Example.txt = Ocelot Code Example.txt
 		PortainerCMD.txt = PortainerCMD.txt
 		PortNumbers.txt = PortNumbers.txt
 	EndProjectSection
