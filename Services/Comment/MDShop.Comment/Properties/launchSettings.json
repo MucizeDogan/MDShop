@@ -12,9 +12,9 @@
     "MDShop.Comment": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": true,
+      "launchBrowser": false,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7155;http://localhost:5073",
+      "applicationUrl": "http://localhost:7075",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
