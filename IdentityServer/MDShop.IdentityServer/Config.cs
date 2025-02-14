@@ -67,7 +67,12 @@ namespace MDShop.IdentityServer
                 ClientName = "MDShop Manager User",
                 AllowedGrantTypes =GrantTypes.ResourceOwnerPassword, //GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
-                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission", "OcelotFullPermission", "CommentFullPermission", "PaymentFullPermission", "ImageFullPermission" }
+                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission", "OcelotFullPermission", "CommentFullPermission", "PaymentFullPermission", "ImageFullPermission",
+                IdentityServerConstants.LocalApi.ScopeName,
+                IdentityServerConstants.StandardScopes.Email,
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile
+                }
             },
 
             // Admin
