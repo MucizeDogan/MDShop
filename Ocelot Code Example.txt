@@ -1,11 +1,28 @@
-{
-  "Routes": [
-    
-  ],
-  "GlobalConfiguration": {
-    "BaseUrl": "http://localhost:5000"
-  }
-}
-// Upstream; client tarafýndan bize gelen isteðin olduðu kýsým.
-// Downstream; bu gelen isteði Ocelot da nasýl karþýlayýp nasýl geri göndereceðiz (Requeste vereceðimiz yanýt.)
-// Burada bütün mikroservislerimize daðýtým yapcaðýz.
+ var client = _httpClientFactory.CreateClient();
+            var content = new StringContent(JsonSerializer.Serialize(createLoginDto), Encoding.UTF8,"application/json");
+            var res = await client.PostAsync("http://localhost:5001/api/Logins", content);
+            if (res.IsSuccessStatusCode) {
+                var jsonData = await res.Content.ReadAsStringAsync();
+                // Buraya kadar klasik bildiðimiz þeyler. Bundan sonraki olay sisteme giriþ yapan kullanýcý için bir token ürettireceðiz. Bu token ýn doðruluðu kontrol edilecek.
+                var tokenModel = JsonSerializer.Deserialize<JWTResponseModel>(jsonData, new JsonSerializerOptions {
+                    PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+                });
+                if (tokenModel != null) {
+                    JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+                    var token = handler.ReadJwtToken(tokenModel.Token);
+                    var claims = token.Claims.ToList();
+
+                    if (tokenModel.Token != null) {
+                        claims.Add(new Claim("mdsshoptoken",tokenModel.Token));
+                        var claimsIdentity = new ClaimsIdentity(claims, JwtBearerDefaults.AuthenticationScheme);
+                        var authProps = new AuthenticationProperties {
+                            ExpiresUtc = tokenModel.ExpireDate,
+                            IsPersistent = true
+                        };
+
+                        await HttpContext.SignInAsync(JwtBearerDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProps);
+                        var id = _loginService.GetUserId; // giriþ yapan kullanýcýnýn id deðerini alýyoruz
+                        return RedirectToAction("Index", "Default");
+                    }
+                }
+            }

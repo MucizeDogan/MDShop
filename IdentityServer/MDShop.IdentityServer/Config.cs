@@ -57,7 +57,7 @@ namespace MDShop.IdentityServer
                 ClientName = "MDShop Visitor User",
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
-                AllowedScopes={"CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission"}, // Visitor hangi yetkilere sahip olsun.
+                AllowedScopes={"CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission", "CommentFullPermission", "ImageFullPermission"}, // Visitor hangi yetkilere sahip olsun.
 
             },
 
@@ -67,7 +67,12 @@ namespace MDShop.IdentityServer
                 ClientName = "MDShop Manager User",
                 AllowedGrantTypes =GrantTypes.ResourceOwnerPassword, //GrantTypes.ResourceOwnerPassword,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
-                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission", "OcelotFullPermission" }
+                AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "BasketFullPermission", "OcelotFullPermission", "CommentFullPermission", "PaymentFullPermission", "ImageFullPermission",
+                IdentityServerConstants.LocalApi.ScopeName,
+                IdentityServerConstants.StandardScopes.Email,
+                IdentityServerConstants.StandardScopes.OpenId,
+                IdentityServerConstants.StandardScopes.Profile
+                }
             },
 
             // Admin
@@ -77,7 +82,7 @@ namespace MDShop.IdentityServer
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword, //GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
                 AllowedScopes = { "CatalogReadPermission", "CatalogFullPermission", "DiscountFullPermission", "OrderFullPermisson", "CargoFullPermission", "OcelotFullPermission", 
-                    "BasketFullPermission",
+                    "BasketFullPermission", "CommentFullPermission", "PaymentFullPermission", "ImageFullPermission",
 
                 IdentityServerConstants.LocalApi.ScopeName,
                 IdentityServerConstants.StandardScopes.Email,
