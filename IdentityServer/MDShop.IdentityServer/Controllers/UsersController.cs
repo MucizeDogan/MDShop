@@ -1,12 +1,16 @@
 ﻿using MDShop.IdentityServer.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
+using static IdentityServer4.IdentityServerConstants;
 
 namespace MDShop.IdentityServer.Controllers {
+    [Authorize(LocalApi.PolicyName)]
+
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase {
@@ -16,8 +20,8 @@ namespace MDShop.IdentityServer.Controllers {
             _userManager = userManager;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetUserInfo() {
+        [HttpGet("GetUser")]
+        public async Task<IActionResult> GetUser() {
             var userClaim = User.Claims.FirstOrDefault(x=>x.Type == JwtRegisteredClaimNames.Sub); // Tokendaki id değeri
             var user = await _userManager.FindByIdAsync(userClaim.Value);
             return Ok(new {
