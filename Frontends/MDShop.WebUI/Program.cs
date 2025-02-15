@@ -1,5 +1,6 @@
 
 
+using MDShop.WebUI.Handlers;
 using MDShop.WebUI.Services.Concrete;
 using MDShop.WebUI.Services.Interfaces;
 using MDShop.WebUI.Services.LoginServices;
@@ -44,6 +45,13 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 
 builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("ClientSettings"));
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
+
+builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+
+var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+builder.Services.AddHttpClient<IUserService, UserServie>(opt => {
+    opt.BaseAddress = new Uri(values.IdentityServerUrl); // IdentityServerUrl adresini ServiceApiSettings in içinden almýþ olduk.
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>(); // sisteme herhangi bir authentication iþlemi yapýldýðý anda Handler tetiklensin ve token ý üretip geçerliliðini UI tarafýnda kontrol etsin.
 
 var app = builder.Build();
 
