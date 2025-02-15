@@ -7,32 +7,40 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using IdentityServer4.Models;
 using System.Security.Claims;
+using MDShop.WebUI.Services.LoginServices;
 
-namespace MDShop.WebUI.Services.LoginServices {
-    public class IdentityService : IIdentityService {
+namespace MDShop.WebUI.Services.Concrete
+{
+    public class IdentityService : IIdentityService
+    {
         private readonly HttpClient _httpClient;
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly ClientSettings _clientSettings;
         private readonly ServiceApiSettings _serviceApiSettings;
 
-        public IdentityService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<ClientSettings> clientSettings, IOptions<ServiceApiSettings> serviceApiSettings) {
+        public IdentityService(HttpClient httpClient, IHttpContextAccessor httpContextAccessor, IOptions<ClientSettings> clientSettings, IOptions<ServiceApiSettings> serviceApiSettings)
+        {
             _httpClient = httpClient;
             _httpContextAccessor = httpContextAccessor;
             _clientSettings = clientSettings.Value;
             _serviceApiSettings = serviceApiSettings.Value;
         }
 
-        public async Task<bool> GetRefreshToken() {
-            var discoveryEndpoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest {
+        public async Task<bool> GetRefreshToken()
+        {
+            var discoveryEndpoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+            {
                 Address = _serviceApiSettings.IdentityServerUrl,
-                Policy = new DiscoveryPolicy {
+                Policy = new DiscoveryPolicy
+                {
                     RequireHttps = false
                 }
             });//buradan 5001/connect/token a istekte bulunacağız ancak biz https yerine http yaptığımız için bununla ilgili ayar yapmamız gerekiyor
 
             var refreshToken = await _httpContextAccessor.HttpContext.GetTokenAsync(OpenIdConnectParameterNames.RefreshToken);
 
-            RefreshTokenRequest refreshTokenRequest = new RefreshTokenRequest() {
+            RefreshTokenRequest refreshTokenRequest = new RefreshTokenRequest()
+            {
                 ClientId = _clientSettings.MDShopManagerClient.ClientId,
                 ClientSecret = _clientSettings.MDShopManagerClient.ClientSecret,
                 RefreshToken = refreshToken,
@@ -70,16 +78,20 @@ namespace MDShop.WebUI.Services.LoginServices {
             return true;
         }
 
-        public async Task<bool> SignIn(SignInDto signInDto) {
+        public async Task<bool> SignIn(SignInDto signInDto)
+        {
             // Discovery Endpoint aslında bir dağıtım sağlıyor. bunun üzerinden gideğimiz adresi vs belirliyor olacağız.
-            var discoveryEndpoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest {
-                Address= _serviceApiSettings.IdentityServerUrl,
-                Policy = new DiscoveryPolicy {
+            var discoveryEndpoint = await _httpClient.GetDiscoveryDocumentAsync(new DiscoveryDocumentRequest
+            {
+                Address = _serviceApiSettings.IdentityServerUrl,
+                Policy = new DiscoveryPolicy
+                {
                     RequireHttps = false
                 }
             });//buradan 5001/connect/token a istekte bulunacağız ancak biz https yerine http yaptığımız için bununla ilgili ayar yapmamız gerekiyor
 
-            var passwordTokenRequest = new PasswordTokenRequest {
+            var passwordTokenRequest = new PasswordTokenRequest
+            {
                 ClientId = _clientSettings.MDShopManagerClient.ClientId,
                 ClientSecret = _clientSettings.MDShopManagerClient.ClientSecret,
                 UserName = signInDto.Username,
@@ -89,7 +101,8 @@ namespace MDShop.WebUI.Services.LoginServices {
 
             var token = await _httpClient.RequestPasswordTokenAsync(passwordTokenRequest);
 
-            var userInfoRequest = new UserInfoRequest {
+            var userInfoRequest = new UserInfoRequest
+            {
                 Token = token.AccessToken,
                 Address = discoveryEndpoint.UserInfoEndpoint
             };

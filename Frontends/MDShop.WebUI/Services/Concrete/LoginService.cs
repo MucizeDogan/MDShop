@@ -1,10 +1,14 @@
 ﻿using System.Security.Claims;
+using MDShop.WebUI.Services.Interfaces;
 
-namespace MDShop.WebUI.Services.LoginServices {
-    public class LoginService : ILoginService {
+namespace MDShop.WebUI.Services.Concrete
+{
+    public class LoginService : ILoginService
+    {
         private readonly IHttpContextAccessor _contextAccessor;
 
-        public LoginService(IHttpContextAccessor contextAccessor) {
+        public LoginService(IHttpContextAccessor contextAccessor)
+        {
             _contextAccessor = contextAccessor;
         }
 
