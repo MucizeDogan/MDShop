@@ -1,5 +1,6 @@
 ﻿using MDShop.DtoLayer.IdentityDtos.LoginDtos;
 using MDShop.WebUI.Models;
+using MDShop.WebUI.Services.Interfaces;
 using MDShop.WebUI.Services.LoginServices;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,7 +11,8 @@ using System.Security.Claims;
 using System.Text;
 using System.Text.Json;
 
-namespace MDShop.WebUI.Controllers {
+namespace MDShop.WebUI.Controllers
+{
     public class LoginController : Controller {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly ILoginService _loginService;
