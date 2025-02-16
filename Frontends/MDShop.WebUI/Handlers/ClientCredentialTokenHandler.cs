@@ -1,0 +1,23 @@
+﻿
+using MDShop.WebUI.Services.Interfaces;
+using System.Net;
+using System.Net.Http.Headers;
+
+namespace MDShop.WebUI.Handlers {
+    public class ClientCredentialTokenHandler : DelegatingHandler {
+        private readonly IClientCredentialTokenService _clientCredentialTokenService;
+
+        public ClientCredentialTokenHandler(IClientCredentialTokenService clientCredentialTokenService) {
+            _clientCredentialTokenService = clientCredentialTokenService;
+        }
+
+        protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) {
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await _clientCredentialTokenService.GetToken());
+            var res = await base.SendAsync(request, cancellationToken);
+            if (res.StatusCode == HttpStatusCode.Unauthorized) {
+                // Hata Mesajı
+            }
+            return res;
+        }
+    }
+}
