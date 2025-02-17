@@ -58,7 +58,7 @@ namespace MDShop.IdentityServer
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
                 ClientSecrets = {new Secret("mdshopsecret".Sha256())},
                 AllowedScopes={"CatalogReadPermission", "CatalogFullPermission", "OcelotFullPermission", "CommentFullPermission", "ImageFullPermission"}, // Visitor hangi yetkilere sahip olsun.
-
+                AllowAccessTokensViaBrowser=true
             },
 
             //2. Client Manager
