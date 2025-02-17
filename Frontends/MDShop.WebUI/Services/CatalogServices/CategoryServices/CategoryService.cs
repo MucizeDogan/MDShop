@@ -1,4 +1,5 @@
 ﻿using MDShop.DtoLayer.CatalogDtos.CategoryDto;
+using Newtonsoft.Json;
 
 namespace MDShop.WebUI.Services.CatalogServices.CategoryServices {
     public class CategoryService : ICategoryService {
@@ -17,8 +18,8 @@ namespace MDShop.WebUI.Services.CatalogServices.CategoryServices {
         }
 
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync() {
-            var res = await _httpClient.GetAsync("categories");
-            var values = await res.Content.ReadFromJsonAsync<List<ResultCategoryDto>>();
+            var responseMessage = await _httpClient.GetAsync("categories");
+            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultCategoryDto>>();
             return values;
         }
 

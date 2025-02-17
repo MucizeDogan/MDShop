@@ -10,7 +10,7 @@
           "Port": 7070 //catolog port
         }
       ],
-      "UpstreamPathTemplate": "/services/catolog/{everything}", // isteğin yapılacağı yer
+      "UpstreamPathTemplate": "/services/catalog/{everything}", // isteğin yapılacağı yer
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ], // Hangi metodlara izin veriliyor
       "UpstreamScheme": "http",
       "AuthenticationOptions": { // Key almamız gerekiyor

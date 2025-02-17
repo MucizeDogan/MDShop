@@ -1,6 +1,5 @@
-
-
 using MDShop.WebUI.Handlers;
+using MDShop.WebUI.Services.CatalogServices.CategoryServices;
 using MDShop.WebUI.Services.Concrete;
 using MDShop.WebUI.Services.Interfaces;
 using MDShop.WebUI.Services.LoginServices;
@@ -34,6 +33,7 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
 
 builder.Services.AddHttpContextAccessor();
 
+
 builder.Services.AddScoped<ILoginService, LoginService>();
 builder.Services.AddHttpClient<IIdentityService, IdentityService>();
 
@@ -47,11 +47,19 @@ builder.Services.Configure<ClientSettings>(builder.Configuration.GetSection("Cli
 builder.Services.Configure<ServiceApiSettings>(builder.Configuration.GetSection("ServiceApiSettings"));
 
 builder.Services.AddScoped<ResourceOwnerPasswordTokenHandler>();
+builder.Services.AddScoped<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
 builder.Services.AddHttpClient<IUserService, UserServie>(opt => {
     opt.BaseAddress = new Uri(values.IdentityServerUrl); // IdentityServerUrl adresini ServiceApiSettings in içinden almýþ olduk.
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>(); // sisteme herhangi bir authentication iþlemi yapýldýðý anda Handler tetiklensin ve token ý üretip geçerliliðini UI tarafýnda kontrol etsin.
+
+builder.Services.AddHttpClient<ICategoryService, CategoryService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
 
 var app = builder.Build();
 

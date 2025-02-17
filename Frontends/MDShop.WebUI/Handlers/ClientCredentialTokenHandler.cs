@@ -13,11 +13,11 @@ namespace MDShop.WebUI.Handlers {
 
         protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken) {
             request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", await _clientCredentialTokenService.GetToken());
-            var res = await base.SendAsync(request, cancellationToken);
-            if (res.StatusCode == HttpStatusCode.Unauthorized) {
-                // Hata Mesajı
+            var response = await base.SendAsync(request, cancellationToken);
+            if (response.StatusCode == HttpStatusCode.Unauthorized) {
+                //hata mesajı
             }
-            return res;
+            return response;
         }
     }
 }
