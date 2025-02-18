@@ -25,7 +25,7 @@ namespace MDShop.WebUI.Areas.Admin.Controllers {
                 return View(values);
             } catch (Exception ex) {
                 TempData["Error"] = "Kategoriler yüklenirken bir hata oluştu!";
-                return RedirectToAction("Index", "Home", new { area = "Admin" });
+                return RedirectToAction("Index", "Category", new { area = "Admin" });
             }
         }
 
