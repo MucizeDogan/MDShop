@@ -19,13 +19,14 @@ namespace MDShop.WebUI.Services.CatalogServices.CategoryServices {
 
         public async Task<List<ResultCategoryDto>> GetAllCategoryAsync() {
             var responseMessage = await _httpClient.GetAsync("categories");
-            var values = await responseMessage.Content.ReadFromJsonAsync<List<ResultCategoryDto>>();
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
             return values;
         }
 
-        public async Task<GetByIdCategoryDto> GetByIdCategoryAsync(string id) {
+        public async Task<UpdateCategoryDto> GetByIdCategoryAsync(string id) {
             var res = await _httpClient.GetAsync("categories/" + id);
-            var value = await res.Content.ReadFromJsonAsync<GetByIdCategoryDto>();
+            var value = await res.Content.ReadFromJsonAsync<UpdateCategoryDto>();
             return value;
         }
 
