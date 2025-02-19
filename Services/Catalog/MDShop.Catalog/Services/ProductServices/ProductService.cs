@@ -62,7 +62,7 @@ namespace MDShop.Catalog.Services.ProductServices {
             return _mapper.Map<List<ResultProductsWithCategoryDto>>(products);
         }
 
-        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryByCatetegoryIdAsync(string CategoryId) {
+        public async Task<List<ResultProductsWithCategoryDto>> GetProductsWithCategoryByCategoryIdAsync(string CategoryId) {
             var values = await _productCollection.Find(x => x.CategoryID == CategoryId).ToListAsync();
 
             foreach (var item in values) {

@@ -12,6 +12,11 @@ namespace MDShop.WebUI.Controllers {
         }
         public IActionResult Index(string id) {
             ViewBag.i = id; // id değerini taşımak için
+
+            ViewBag.path1 = "Ana Sayfa";
+            ViewBag.path3 = "Ürünler";
+            ViewBag.path3 = "Ürün Listesi";
+
             return View();
         }
 
