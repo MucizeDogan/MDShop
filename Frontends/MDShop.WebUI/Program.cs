@@ -1,4 +1,6 @@
 using MDShop.WebUI.Handlers;
+using MDShop.WebUI.Services.CatalogServices.AboutServices;
+using MDShop.WebUI.Services.CatalogServices.BrandServices;
 using MDShop.WebUI.Services.CatalogServices.CategoryServices;
 using MDShop.WebUI.Services.CatalogServices.FeatureServices;
 using MDShop.WebUI.Services.CatalogServices.FeatureSliderServices;
@@ -11,6 +13,7 @@ using MDShop.WebUI.Services.LoginServices;
 using MDShop.WebUI.Settings;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.CodeAnalysis.Operations;
 using Newtonsoft.Json.Linq;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -84,6 +87,14 @@ builder.Services.AddHttpClient<IFeatureService, FeatureService>(opt => {
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IOfferDiscountService, OfferDiscountService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IBrandService, BrandService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IAboutService, AboutService>(opt => {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
