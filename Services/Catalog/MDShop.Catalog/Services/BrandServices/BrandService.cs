@@ -37,7 +37,7 @@ namespace MDShop.Catalog.Services.BrandServices {
                 var value = _mapper.Map<Brand>(createBrandDto);
                 await _brandCollection.InsertOneAsync(value);
             } else {
-                throw new Exception("Bu sıra numarasına sahip bir kayıt zaten mevcut.");
+                throw new ApplicationException("Bu sıra numarasına sahip bir kayıt zaten mevcut.");
             }
         }
 
