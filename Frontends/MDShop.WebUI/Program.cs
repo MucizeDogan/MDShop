@@ -1,6 +1,8 @@
 using MDShop.WebUI.Handlers;
 using MDShop.WebUI.Services.CatalogServices.CategoryServices;
+using MDShop.WebUI.Services.CatalogServices.FeatureServices;
 using MDShop.WebUI.Services.CatalogServices.FeatureSliderServices;
+using MDShop.WebUI.Services.CatalogServices.OfferDiscountServices;
 using MDShop.WebUI.Services.CatalogServices.ProductServices;
 using MDShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MDShop.WebUI.Services.Concrete;
@@ -76,6 +78,15 @@ builder.Services.AddHttpClient<ISpecialOfferService, SpecialOfferService>(opt =>
 builder.Services.AddHttpClient<IFeatureSliderService, FeatureSliderService>(opt => {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IFeatureService, FeatureService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IOfferDiscountService, OfferDiscountService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
 
 
 var app = builder.Build();
