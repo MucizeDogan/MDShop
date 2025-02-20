@@ -7,9 +7,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MDShop.Comment.Controllers {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
     public class CommentsController : ControllerBase {
         private readonly CommentContext _context;
         private readonly IMapper _mapper;
