@@ -2,6 +2,7 @@ using MDShop.WebUI.Handlers;
 using MDShop.WebUI.Services.CatalogServices.AboutServices;
 using MDShop.WebUI.Services.CatalogServices.BrandServices;
 using MDShop.WebUI.Services.CatalogServices.CategoryServices;
+using MDShop.WebUI.Services.CatalogServices.ContactServices;
 using MDShop.WebUI.Services.CatalogServices.FeatureServices;
 using MDShop.WebUI.Services.CatalogServices.FeatureSliderServices;
 using MDShop.WebUI.Services.CatalogServices.OfferDiscountServices;
@@ -106,6 +107,10 @@ builder.Services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+builder.Services.AddHttpClient<IContactService, ContactService>(opt => {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
