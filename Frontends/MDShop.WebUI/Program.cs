@@ -9,6 +9,7 @@ using MDShop.WebUI.Services.CatalogServices.ProductDetailServices;
 using MDShop.WebUI.Services.CatalogServices.ProductImagesServices;
 using MDShop.WebUI.Services.CatalogServices.ProductServices;
 using MDShop.WebUI.Services.CatalogServices.SpecialOfferServices;
+using MDShop.WebUI.Services.CommentServices;
 using MDShop.WebUI.Services.Concrete;
 using MDShop.WebUI.Services.Interfaces;
 using MDShop.WebUI.Services.LoginServices;
@@ -106,6 +107,11 @@ builder.Services.AddHttpClient<IProductImageService, ProductImageService>(opt =>
 
 builder.Services.AddHttpClient<IProductDetailService, ProductDetailService>(opt => {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Catalog.Path}/");
+}).AddHttpMessageHandler<ClientCredentialTokenHandler>();
+
+
+builder.Services.AddHttpClient<ICommentService, CommentService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Comment.Path}/");
 }).AddHttpMessageHandler<ClientCredentialTokenHandler>();
 
 
