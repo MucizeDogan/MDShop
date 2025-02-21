@@ -1,4 +1,5 @@
 using MDShop.WebUI.Handlers;
+using MDShop.WebUI.Services.BasketServices;
 using MDShop.WebUI.Services.CatalogServices.AboutServices;
 using MDShop.WebUI.Services.CatalogServices.BrandServices;
 using MDShop.WebUI.Services.CatalogServices.CategoryServices;
@@ -64,9 +65,14 @@ builder.Services.AddScoped<ClientCredentialTokenHandler>();
 builder.Services.AddHttpClient<IClientCredentialTokenService, ClientCredentialTokenService>();
 
 var values = builder.Configuration.GetSection("ServiceApiSettings").Get<ServiceApiSettings>();
+
 builder.Services.AddHttpClient<IUserService, UserServie>(opt => {
     opt.BaseAddress = new Uri(values.IdentityServerUrl); // IdentityServerUrl adresini ServiceApiSettings in içinden almýþ olduk.
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>(); // sisteme herhangi bir authentication iþlemi yapýldýðý anda Handler tetiklensin ve token ý üretip geçerliliðini UI tarafýnda kontrol etsin.
+
+builder.Services.AddHttpClient<IBasketService, BasketService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}/");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
 
