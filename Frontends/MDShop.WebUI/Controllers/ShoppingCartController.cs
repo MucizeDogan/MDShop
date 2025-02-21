@@ -20,13 +20,14 @@ namespace MDShop.WebUI.Controllers {
             return View();
         }
 
-        public async Task<IActionResult> AddBasketItem(string productId) {
-            var values = await _productService.GetByIdProductAsync(productId);
+        public async Task<IActionResult> AddBasketItem(string id) {
+            var values = await _productService.GetByIdProductAsync(id);
             var items = new BasketItemDto {
                 ProductId = values.ProductID,
                 ProductName = values.ProductName,
                 Price = values.ProductPrice,
-                Quantity = 1
+                Quantity = 1,
+                ProductImageUrl = values.ProductImageUrl
             };
             await _basketService.AddBasketItem(items);
             return RedirectToAction("Index");
