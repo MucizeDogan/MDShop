@@ -13,9 +13,11 @@ namespace MDShop.WebUI.Controllers {
             _basketService = basketService;
         }
 
-        public async Task<IActionResult> Index() {
-            var values = await _basketService.GetBasket();
-            return View(values);
+        public IActionResult Index() {
+            ViewBag.path1 = "Ana Sayfa";
+            ViewBag.path3 = "Sepetim";
+
+            return View();
         }
 
         public async Task<IActionResult> AddBasketItem(string productId) {
