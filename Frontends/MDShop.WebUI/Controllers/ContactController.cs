@@ -15,7 +15,7 @@ namespace MDShop.WebUI.Controllers {
         [HttpGet]
         public IActionResult Index() {
             ViewBag.path1 = "Ana Sayfa";
-            ViewBag.path3 = "";
+            ViewBag.path2 = "";
             ViewBag.path3 = "İletişim";
             return View();
         }

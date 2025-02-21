@@ -1,9 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MDShop.WebUI.Services.BasketServices;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MDShop.WebUI.ViewComponents.ShoppingCartViewComponents {
     public class _ShoppingCartProductListComponentPartial : ViewComponent {
-        public IViewComponentResult Invoke() {
-            return View();
+        private readonly IBasketService _basketService;
+
+        public _ShoppingCartProductListComponentPartial(IBasketService basketService) {
+            _basketService = basketService;
+        }
+
+        public async Task<IViewComponentResult> InvokeAsync() {
+            var basketTotal = await _basketService.GetBasket();
+            var basketItems = basketTotal.BasketItems;
+            return View(basketItems);
+
         }
     }
 }
