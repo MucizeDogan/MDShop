@@ -3,6 +3,7 @@ using MDShop.Discount.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace MDShop.Discount.Controllers {
     [Authorize]
@@ -43,6 +44,12 @@ namespace MDShop.Discount.Controllers {
         public async Task<IActionResult> UpdateDiscountCoupon(UpdateDiscountCouponDto updateCouponDto) {
             await _discountService.UpdateDiscountCouponAsync(updateCouponDto);
             return Ok("İndirim kuponu başarıyla güncellendi");
+        }
+
+        [HttpGet("GetCodeDetailByCodeAsync")]
+        public async Task<IActionResult> GetCodeDetailByCodeAsync (string code) {
+            var values = await _discountService.GetCodeDetailByCodeAsync(code);
+            return Ok(values);
         }
     }
 }
