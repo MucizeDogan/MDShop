@@ -13,6 +13,7 @@ using MDShop.WebUI.Services.CatalogServices.ProductServices;
 using MDShop.WebUI.Services.CatalogServices.SpecialOfferServices;
 using MDShop.WebUI.Services.CommentServices;
 using MDShop.WebUI.Services.Concrete;
+using MDShop.WebUI.Services.DiscountServices;
 using MDShop.WebUI.Services.Interfaces;
 using MDShop.WebUI.Services.LoginServices;
 using MDShop.WebUI.Settings;
@@ -72,6 +73,10 @@ builder.Services.AddHttpClient<IUserService, UserServie>(opt => {
 
 builder.Services.AddHttpClient<IBasketService, BasketService>(opt => {
     opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Basket.Path}/");
+}).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
+
+builder.Services.AddHttpClient<IDiscountService, DiscountService>(opt => {
+    opt.BaseAddress = new Uri($"{values.OcelotUrl}/{values.Discount.Path}/");
 }).AddHttpMessageHandler<ResourceOwnerPasswordTokenHandler>();
 
 
