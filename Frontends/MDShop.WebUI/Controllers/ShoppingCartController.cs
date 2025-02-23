@@ -13,9 +13,19 @@ namespace MDShop.WebUI.Controllers {
             _basketService = basketService;
         }
 
-        public IActionResult Index() {
+        public async Task<IActionResult> Index() {
             ViewBag.path1 = "Ana Sayfa";
             ViewBag.path3 = "Sepetim";
+
+            var basketTotal = await _basketService.GetBasket();
+            ViewBag.totalPrice = basketTotal.TotalPrice.ToString("#,##0.00");
+
+            var TaxRate = 10; // %10
+            var TaxPrice = (basketTotal.TotalPrice * TaxRate) / 100;
+            var totalPriceWithTax = basketTotal.TotalPrice + TaxPrice;
+            ViewBag.TaxRate = TaxRate;
+            ViewBag.TaxPrice = TaxPrice.ToString("#,##0.00");
+            ViewBag.totalPriceWithTax = totalPriceWithTax.ToString("#,##0.00");
 
             return View();
         }
