@@ -9,8 +9,10 @@
 
         @await Component.InvokeAsync("_ShoppingCartProductListComponentPartial")
 
-        @await Component.InvokeAsync("_ShoppingCarDiscountCouponComponentPartial")
+        @* @await Component.InvokeAsync("_ShoppingCarDiscountCouponComponentPartial") *@
         
+        @await Html.PartialAsync("~/Views/Discount/ConfirmDiscountCoupon.cshtml");
+
     </div>
 </div>
 
