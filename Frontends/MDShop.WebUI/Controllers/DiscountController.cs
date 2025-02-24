@@ -18,8 +18,24 @@ namespace MDShop.WebUI.Controllers {
         }
 
         [HttpPost]
-        public IActionResult ConfirmDiscountCoupon(string code) {
-            var values = _discountService.GetDiscountCode(code);
+        public async Task<IActionResult> ConfirmDiscountCoupon(string code) {
+            var values = await _discountService.GetDiscountCode(code);
+            
+            var basketTotal = await _basketService.GetBasket();
+            ViewBag.totalPrice = basketTotal.TotalPrice.ToString("#,##0.00");
+
+            var TaxRate = 10; // %10
+            var TaxPrice = (basketTotal.TotalPrice * TaxRate) / 100;
+            var totalPriceWithTax = basketTotal.TotalPrice + TaxPrice;
+            ViewBag.TaxRate = TaxRate;
+            ViewBag.TaxPrice = TaxPrice.ToString("#,##0.00");
+            ViewBag.totalPriceWithTax = totalPriceWithTax.ToString("#,##0.00");
+
+            var discountRate = values.Rate;
+            var discountPrice = totalPriceWithTax / 100 * discountRate;
+            var discountedTotalPriceWithTax = totalPriceWithTax - discountPrice;
+            ViewBag.discountedPrice = discountedTotalPriceWithTax.ToString("#,##0.00");
+
             return View(values);
         }
     }
