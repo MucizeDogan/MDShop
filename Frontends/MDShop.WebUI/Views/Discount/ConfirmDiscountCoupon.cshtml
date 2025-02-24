@@ -18,6 +18,12 @@
                 <h6 class="font-weight-medium">KDV (%@ViewBag.TaxRate)</h6>
                 <h6 class="font-weight-medium">@ViewBag.TaxPrice ₺</h6>
             </div>
+            @if (ViewBag.TaxRate > 0) { //Mucize
+                <div class="d-flex justify-content-between">
+                    <h6 class="font-weight-medium">İndirim (%@ViewBag.TaxRate)</h6>
+                    <h6 class="font-weight-medium">@ViewBag.TaxPrice ₺</h6>
+                </div>
+            }
         </div>
         <div class="pt-2">
             <div class="d-flex justify-content-between mt-2">
