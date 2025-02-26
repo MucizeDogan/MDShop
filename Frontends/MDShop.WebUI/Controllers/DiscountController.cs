@@ -31,12 +31,16 @@ namespace MDShop.WebUI.Controllers {
             ViewBag.TaxPrice = TaxPrice.ToString("#,##0.00");
             ViewBag.totalPriceWithTax = totalPriceWithTax.ToString("#,##0.00");
 
-            var discountRate = values.Rate;
-            var discountPrice = totalPriceWithTax / 100 * discountRate;
-            var discountedTotalPriceWithTax = totalPriceWithTax - discountPrice;
-            ViewBag.discountedPrice = discountedTotalPriceWithTax.ToString("#,##0.00");
+            //var discountRate = values.Rate;
+            //if (values.Rate > 0) {
+            //    var discountPrice = totalPriceWithTax / 100 * discountRate;
+            //    var discountedTotalPriceWithTax = totalPriceWithTax - discountPrice;
+            //    ViewBag.discountedPrice = discountedTotalPriceWithTax.ToString("#,##0.00");
+            //}
 
-            return View(values);
+            //return View(values);
+
+            return RedirectToAction("Index","ShoppingCart", new {code = code});
         }
     }
 }

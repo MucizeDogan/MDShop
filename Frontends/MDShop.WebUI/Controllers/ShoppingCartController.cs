@@ -13,7 +13,7 @@ namespace MDShop.WebUI.Controllers {
             _basketService = basketService;
         }
 
-        public async Task<IActionResult> Index() {
+        public async Task<IActionResult> Index(string code) {
             ViewBag.path1 = "Ana Sayfa";
             ViewBag.path3 = "Sepetim";
 
@@ -26,6 +26,8 @@ namespace MDShop.WebUI.Controllers {
             ViewBag.TaxRate = TaxRate;
             ViewBag.TaxPrice = TaxPrice.ToString("#,##0.00");
             ViewBag.totalPriceWithTax = totalPriceWithTax.ToString("#,##0.00");
+
+            ViewBag.code = code;
 
             return View();
         }
